@@ -12,13 +12,14 @@
     <h1>The Great Swedish Bake-Off</h1>
     <nav class="navbar" aria-label="Main Navigation">
         <ul class="nav-links">
-            <li><a href="index.html" class="logo">Home</a></li>
-            <li><a href="recipes.html">Recipes</a></li>
-            <li><a href="shop.html">Shop</a></li>
-            <li><a href="bakers.html">The Bakers</a></li>
-            <li><a href="watch.html">Watch</a></li>
-            <li><a href="about.html">About</a></li>
+            <li><a href="index.html" class="nav-link active" data-page="home">Home</a></li>
+            <li><a href="recipes.html" class="nav-link" data-page="recipes">Recipes</a></li>
+            <li><a href="shop.html" class="nav-link" data-page="shop">Shop</a></li>
+            <li><a href="bakers.html" class="nav-link" data-page="bakers">The Bakers</a></li>
+            <li><a href="watch.html" class="nav-link" data-page="watch">Watch</a></li>
+            <li><a href="about.html" class="nav-link" data-page="about">About</a></li>
         </ul>
+        <div class="active-indicator"></div>
     </nav>
 </header>
 <main>
@@ -28,5 +29,6 @@
     <p>&copy; 2025 The Great Swedish Bake Off</p>
     <p><a href="mailto:info@fakebakeoff.com">Contact Us</a></p>
 </footer>
+<script src="script.js"></script>
 </body>
 </html>
