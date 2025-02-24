@@ -1,34 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="Emily Osborn">
-    <title>The Great Swedish Bake-Off</title>
-    <link rel="stylesheet" href="styles.css"/>
-</head>
-<body>
-<header>
-    <h1>The Great Swedish Bake-Off</h1>
-    <nav class="navbar" aria-label="Main Navigation">
-        <ul class="nav-links">
-            <li><a href="index.html" class="nav-link">Home</a></li>
-            <li><a href="recipes.html" class="nav-link">Recipes</a></li>
-            <li><a href="shop.html" class="nav-link">Shop</a></li>
-            <li><a href="bakers.html" class="nav-link">The Bakers</a></li>
-            <li><a href="watch.html" class="nav-link">Watch</a></li>
-            <li><a href="about.html" class="nav-link active">About</a></li>
-        </ul>
-        <div class="active-indicator"></div>
-    </nav>
-</header>
-<main>
-    
-</main>
-<footer>
-    <p>&copy; 2025 The Great Swedish Bake Off</p>
-    <p><a href="mailto:info@fakebakeoff.com">Contact Us</a></p>
-</footer>
-<script src="script.js"></script>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Emily Osborn">
+        <title>The Great Swedish Bake-Off - About</title>
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <header>
+            <h1>The Great Swedish Bake-Off</h1>
+            <nav aria-label="Main Navigation">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="recipes.html">Recipes</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="bakers.html">The Bakers</a></li>
+                    <li><a href="watch.html">Watch</a></li>
+                    <li><a href="about.html" class="active">About</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <!-- Hero Section -->
+            <section id="hero" aria-labelledby="hero-heading">
+                <h2 id="hero-heading" class="visually-hidden">Hero Image</h2>
+                <figure>
+                    <img src="images/hero/hero.jpg" alt="Hero image for the Great Swedish Bake-Off">
+                </figure>
+            </section>
+
+            <!-- About the Show Section -->
+            <section id="about-show" aria-labelledby="about-show-heading">
+                <h2 id="about-show-heading">About the Show</h2>
+                <p>
+                    Placeholder text describing the Great Swedish Bake-Off. This section provides an overview of the show, its history, and what makes it unique.
+                </p>
+            </section>
+
+            <!-- The Challenges Section -->
+            <section id="challenges" aria-labelledby="challenges-heading">
+                <h2 id="challenges-heading">The Challenges</h2>
+                <article>
+                    <figure>
+                        <img src="images/challenges/signature.jpg" alt="Placeholder image for Signature Bake">
+                    </figure>
+                    <h3>Signature Bake</h3>
+                    <p>
+                        Placeholder description for the Signature Bake challenge. Contestants re-create their own interpretation of a classic recipe.
+                    </p>
+                </article>
+                <article>
+                    <figure>
+                        <img src="images/challenges/technical.jpg" alt="Placeholder image for Technical Bake">
+                    </figure>
+                    <h3>Technical Bake</h3>
+                    <p>
+                        Placeholder description for the Technical Bake challenge. Contestants are given a standard recipe with limited instructions, testing their fundamental baking skills.
+                    </p>
+                </article>
+                <article>
+                    <figure>
+                        <img src="images/challenges/showstopper.jpg" alt="Placeholder image for Showstopper">
+                    </figure>
+                    <h3>Showstopper</h3>
+                    <p>
+                        Placeholder description for the Showstopper challenge. Contestants create elaborate and innovative baked masterpieces that wow the judges.
+                    </p>
+                </article>
+            </section>
+
+            <!-- Judges Section -->
+            <section id="judges" aria-labelledby="judges-heading">
+                <h2 id="judges-heading">Judges</h2>
+                <article>
+                    <figure>
+                        <img src="images/judges/judge1.jpg" alt="Photo of Judge 1">
+                    </figure>
+                    <h3>Judge 1</h3>
+                    <p>
+                        Placeholder bio for Judge 1. This judge brings years of baking expertise and a discerning palate to the panel.
+                    </p>
+                </article>
+                <article>
+                    <figure>
+                        <img src="images/judges/judge2.jpg" alt="Photo of Judge 2">
+                    </figure>
+                    <h3>Judge 2</h3>
+                    <p>
+                        Placeholder bio for Judge 2. Known for their critical eye and passion for innovative baking techniques.
+                    </p>
+                </article>
+            </section>
+
+            <!-- Presenters Section -->
+            <section id="presenters" aria-labelledby="presenters-heading">
+                <h2 id="presenters-heading">Presenters</h2>
+                <article>
+                    <figure>
+                        <img src="images/presenters/presenter1.jpg" alt="Photo of Presenter 1">
+                    </figure>
+                    <h3>Presenter 1</h3>
+                    <p>
+                        Placeholder bio for Presenter 1. This presenter keeps the show lively with charm and wit.
+                    </p>
+                </article>
+                <article>
+                    <figure>
+                        <img src="images/presenters/presenter2.jpg" alt="Photo of Presenter 2">
+                    </figure>
+                    <h3>Presenter 2</h3>
+                    <p>
+                        Placeholder bio for Presenter 2. Bringing energy and enthusiasm, they guide both contestants and the audience.
+                    </p>
+                </article>
+            </section>
+        </main>
+        <footer>
+            <p>&copy; 2025 The Great Swedish Bake Off</p>
+            <p><a href="mailto:info@fakebakeoff.com">Contact Us</a></p>
+        </footer>
+        <script src="script.js"></script>
+    </body>
 </html>
