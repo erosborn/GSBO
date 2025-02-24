@@ -10,571 +10,75 @@
 <body>
 <header>
     <h1>The Great Swedish Bake-Off</h1>
-    <nav class="navbar" aria-label="Main Navigation">
-        
-        <ul class="nav-links">
-            <li><a href="index.html" class="nav-link">Home</a></li>
-            <li><a href="recipes.html" class="nav-link active">Recipes</a></li>
-            <li><a href="shop.html" class="nav-link">Shop</a></li>
-            <li><a href="bakers.html" class="nav-link">The Bakers</a></li>
-            <li><a href="watch.html" class="nav-link">Watch</a></li>
-            <li><a href="about.html" class="nav-link">About</a></li>
+    <nav aria-label="Main Navigation">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="recipes.html" class="active">Recipes</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="bakers.html">The Bakers</a></li>
+            <li><a href="watch.html">Watch</a></li>
+            <li><a href="about.html">About</a></li>
         </ul>
-        <div class="active-indicator"></div>
     </nav>
 </header>
 <main>
-    <div class="recipe-cards">
+    <section id="recipes-grid">
         <!-- Recipe Card 1 -->
-        <article class="recipe-card" data-recipe="lussekatter" data-translatable="true">
-            <div class="recipe-preview">
-                <h2>Classic St Lucia Buns (Lussekatter)</h2>
-                <p class="recipe-description">Traditional saffron-flavored sweet rolls served on December 13th to celebrate St. Lucia Day.</p>
-                <button class="expand-button" aria-label="Show full recipe">View Recipe</button>
-            </div>
-            <div class="recipe-full">
-                <div class="recipe-header">
-                    <h2>Classic St Lucia Buns (Lussekatter)</h2>
-                    <div class="recipe-controls">
-                        <button class="collapse-button" aria-label="Hide recipe">Close</button>
-                    </div>
-                </div>
-                <h2>Ingredients:</h2>
-                <ul>
-                    <li>3/4 cup butter or margarine</li>
-                    <li>2 cups milk</li>
-                    <li>4 tsp instant yeast (or 50 g fresh yeast)</li>
-                    <li>1/2 tsp salt</li>
-                    <li>3/4 cup sugar</li>
-                    <li>1/4 tsp saffron</li>
-                    <li>1 tsp cardamom</li>
-                    <li>1 egg</li>
-                    <li>6 cups all-purpose flour</li>
-                    <li>1 dl (about 1/3 cup + 1 tbsp) raisins</li>
-                    <li>1 egg (for egg wash)</li>
-                </ul>
-                
-                <h2>Instructions:</h2>
-                <div class="language-buttons">
-                    <button class="language-btn" data-lang="default">Normal</button>
-                    <button class="language-btn active" data-lang="chef">ChefSpeak</button>
-                </div>
-                <ol>
-                    <li>Melt butter in a saucepan. Add milk and heat until lukewarm.</li>
-                    <li>Pour the milk and butter mixture into a bowl. Add yeast and stir until dissolved.</li>
-                    <li>Add salt, sugar, saffron, cardamom, and egg. Mix well.</li>
-                    <li>Gradually add flour while mixing. Mix until the dough pulls away from the bowl.</li>
-                    <li>Cover and let rise for 30 minutes.</li>
-                    <li>Lightly flour a surface. Knead the dough, adding more flour if needed.</li>
-                    <li>Divide dough into four parts. Roll each into a cylinder and cut into strips. Shape into "S" forms. Add raisins for decoration.</li>
-                    <li>Place shaped dough on a greased or parchment-lined baking sheet. Let rise for 30 minutes.</li>
-                    <li>Preheat oven to 435°F (225°C).</li>
-                    <li>Brush buns with whisked egg. Bake for 7–10 minutes until golden brown.</li>
-                </ol>
-                
-                <h2>Preparation Time:</h2>
-                <div class="time-info">
-                    <p><strong>Preparation Time:</strong> 1 hour</p>
-                    <p><strong>Cooking Time:</strong> 10 minutes</p>
-                    <p><strong>Resting Time:</strong> 1 hour</p>
-                    <p><strong>Total Time:</strong> 2 hours 30 minutes</p>
-                    <p><strong>Yield:</strong> 40 buns</p>
-                </div>
-            </div>
+        <article>
+            <img src="images/food/lussekatter_1.jpeg" alt="Classic St Lucia Buns">
+            <h2>Classic St Lucia Buns (Lussekatter)</h2>
+            <p>Traditional saffron-flavored sweet rolls served on December 13th to celebrate St. Lucia Day.</p>
+            <a href="recipes/lussekatter.html" aria-label="View full recipe for Classic St Lucia Buns">View Recipe</a>
         </article>
 
         <!-- Recipe Card 2 -->
-        <article class="recipe-card" data-recipe="kanelbullar" data-translatable="true">
-            <div class="recipe-preview">
-                <h2>Kanelbullar (Swedish Cinnamon Buns)</h2>
-                <p class="recipe-description">Classic Swedish cinnamon buns with a perfect blend of butter, sugar, and spices.</p>
-                <button class="expand-button" aria-label="Show full recipe">View Recipe</button>
-            </div>
-            <div class="recipe-full">
-                <div class="recipe-header">
-                    <h2>Kanelbullar (Swedish Cinnamon Buns)</h2>
-                    <div class="recipe-controls">
-                        <button class="collapse-button" aria-label="Hide recipe">Close</button>
-                    </div>
-                </div>
-                <h2>Ingredients:</h2>
-                <h3>Dough:</h3>
-                <ul>
-                    <li>2 cups milk</li>
-                    <li>14 tbsp butter</li>
-                    <li>1 cup powdered sugar</li>
-                    <li>4 tsp instant yeast (or 50 g fresh yeast)</li>
-                    <li>1 tsp cardamom</li>
-                    <li>6 cups all-purpose flour</li>
-                </ul>
-
-                <h3>Cinnamon Filling:</h3>
-                <ul>
-                    <li>11 tbsp softened butter</li>
-                    <li>6 tbsp granulated sugar</li>
-                    <li>1.5 tbsp cinnamon</li>
-                </ul>
-
-                <h3>Decoration:</h3>
-                <ul>
-                    <li>1 egg, whisked</li>
-                    <li>Swedish pearl sugar (optional)</li>
-                </ul>
-                
-                <h2>Instructions:</h2>
-                <div class="language-buttons">
-                    <button class="language-btn" data-lang="default">Normal</button>
-                    <button class="language-btn active" data-lang="chef">ChefSpeak</button>
-                </div>
-                <h3>Prepare the Dough:</h3>
-                <ol>
-                    <li>Heat milk, butter, and powdered sugar in a saucepan. Remove from heat and let cool until just warm.</li>
-                    <li>Transfer to a mixing bowl. Add cardamom and yeast, stirring until dissolved.</li>
-                    <li>Gradually add flour while mixing. Knead for about 10 minutes until the dough is smooth and elastic.</li>
-                </ol>
-
-                <h3>Prepare the Filling:</h3>
-                <ol>
-                    <li>In a small bowl, mix butter, sugar, and cinnamon. If needed, soften butter slightly for easier spreading.</li>
-                </ol>
-
-                <h3>Assemble the Buns:</h3>
-                <ol>
-                    <li>Roll the dough into a large square. Spread the cinnamon filling evenly over the surface.</li>
-                    <li>Fold the dough in half and roll it out again to make it wider.</li>
-                    <li>Use a pastry wheel or knife to cut the dough into about 20 strips.</li>
-                    <li>Twist each strip and tie it into a knot.</li>
-                    <li>Place buns on a parchment-lined baking sheet. Cover and let rise for 1.5 to 2 hours, or until the dough springs back when lightly pressed.</li>
-                </ol>
-
-                <h3>Bake:</h3>
-                <ol>
-                    <li>Preheat oven to 435°F (225°C).</li>
-                    <li>Whisk an egg with a small amount of milk and brush it over the buns. Sprinkle with pearl sugar if using.</li>
-                    <li>Bake for 10–12 minutes until golden brown.</li>
-                    <li>Cool on a wire rack before serving.</li>
-                </ol>
-                
-                <h2>Preparation Time:</h2>
-                <div class="time-info">
-                    <p><strong>Preparation Time:</strong> 30 minutes</p>
-                    <p><strong>Cooking Time:</strong> 10–12 minutes</p>
-                    <p><strong>Rising Time:</strong> 1 hour 30 minutes</p>
-                    <p><strong>Total Time:</strong> 2 hours 20 minutes</p>
-                    <p><strong>Yield:</strong> 20 buns</p>
-                </div>
-            </div>
+        <article>
+            <img src="images/food/kanelbullar_3.jpeg" alt="Swedish Cinnamon Buns">
+            <h2>Kanelbullar (Swedish Cinnamon Buns)</h2>
+            <p>Classic Swedish cinnamon buns with a perfect blend of butter, sugar, and spices.</p>
+            <a href="recipes/kanelbullar.html" aria-label="View full recipe for Kanelbullar">View Recipe</a>
         </article>
 
         <!-- Recipe Card 3 -->
-        <article class="recipe-card" data-recipe="hallongrottor" data-translatable="true">
-            <div class="recipe-preview">
-                <h2>Hallongrottor (Swedish Raspberry Jam Cookies)</h2>
-                <p class="recipe-description">Delicate butter cookies filled with sweet raspberry jam, a classic Swedish treat.</p>
-                <button class="expand-button" aria-label="Show full recipe">View Recipe</button>
-            </div>
-            <div class="recipe-full">
-                <div class="recipe-header">
-                    <h2>Hallongrottor (Swedish Raspberry Jam Cookies)</h2>
-                    <div class="recipe-controls">
-                        <button class="collapse-button" aria-label="Hide recipe">Close</button>
-                    </div>
-                </div>
-                <h2>Ingredients:</h2>
-                <ul>
-                    <li>1 ¾ cups all-purpose flour</li>
-                    <li>½ cup granulated sugar</li>
-                    <li>1 tsp baking powder</li>
-                    <li>2 tsp vanilla sugar (or vanilla extract)</li>
-                    <li>14 tbsp butter (room temperature)</li>
-                    <li>½ cup raspberry jam</li>
-                </ul>
-                
-                <h2>Instructions:</h2>
-                <div class="language-buttons">
-                    <button class="language-btn" data-lang="default">Normal</button>
-                    <button class="language-btn active" data-lang="chef">ChefSpeak</button>
-                </div>
-                <ol>
-                    <li>Preheat oven to 350°F (175°C). Line a baking tray with parchment paper.</li>
-                    <li>In a mixing bowl, combine flour, sugar, baking powder, and vanilla sugar.</li>
-                    <li>Add the butter and mix with hands until the dough forms a ball. Do not over-knead.</li>
-                    <li>Roll the dough into 25 small balls.</li>
-                    <li>Press a deep indentation into the center of each ball using your thumb or the back of a spoon.</li>
-                    <li>Arrange cookies on the baking sheet, leaving space for spreading.</li>
-                    <li>Fill each indentation with raspberry jam.</li>
-                    <li>Bake for 15–20 minutes, until lightly golden.</li>
-                    <li>Allow to cool on a wire rack before serving.</li>
-                </ol>
-                
-                <h2>Preparation Time:</h2>
-                <div class="time-info">
-                    <p><strong>Preparation Time:</strong> 30 minutes</p>
-                    <p><strong>Cooking Time:</strong> 15–20 minutes</p>
-                    <p><strong>Total Time:</strong> 1 hour</p>
-                    <p><strong>Yield:</strong> 25 cookies</p>
-                </div>
-            </div>
+        <article>
+            <img src="images/food/hallongrottor.jpeg" alt="Swedish Raspberry Jam Cookies">
+            <h2>Hallongrottor (Swedish Raspberry Jam Cookies)</h2>
+            <p>Delicate butter cookies filled with sweet raspberry jam, a classic Swedish treat.</p>
+            <a href="recipes/hallongrottor.html" aria-label="View full recipe for Hallongrottor">View Recipe</a>
         </article>
 
         <!-- Recipe Card 4 -->
-        <article class="recipe-card" data-recipe="semlor" data-translatable="true">
-            <div class="recipe-preview">
-                <h2>Swedish Semlor (Fat Tuesday Buns)</h2>
-                <p class="recipe-description">Traditional cardamom buns filled with almond paste and whipped cream, traditionally served before Lent.</p>
-                <button class="expand-button" aria-label="Show full recipe">View Recipe</button>
-            </div>
-            <div class="recipe-full">
-                <div class="recipe-header">
-                    <h2>Swedish Semlor (Fat Tuesday Buns)</h2>
-                    <div class="recipe-controls">
-                        <button class="collapse-button" aria-label="Hide recipe">Close</button>
-                    </div>
-                </div>
-                <h2>Ingredients:</h2>
-                <h3>Dough:</h3>
-                <ul>
-                    <li>2 cups milk</li>
-                    <li>4 tsp instant yeast (or 50 g fresh yeast)</li>
-                    <li>¾ cup granulated sugar</li>
-                    <li>1 tbsp freshly ground cardamom</li>
-                    <li>6 cups flour</li>
-                    <li>1 tsp vanilla sugar (or vanilla extract)</li>
-                    <li>1 pinch salt</li>
-                    <li>1 egg</li>
-                    <li>11 tbsp butter (room temperature)</li>
-                    <li>1 egg (whisked for brushing)</li>
-                </ul>
-
-                <h3>Almond Filling:</h3>
-                <ul>
-                    <li>1 ½ cups blanched whole almonds</li>
-                    <li>¾ cup granulated sugar</li>
-                    <li>½ cup milk or cream (or 2 egg whites)</li>
-                </ul>
-
-                <h3>Topping:</h3>
-                <ul>
-                    <li>2 cups whipping cream</li>
-                    <li>1 tsp vanilla sugar</li>
-                    <li>Powdered sugar (for dusting)</li>
-                </ul>
-                
-                <h2>Instructions:</h2>
-                <div class="language-buttons">
-                    <button class="language-btn" data-lang="default">Normal</button>
-                    <button class="language-btn active" data-lang="chef">ChefSpeak</button>
-                </div>
-                <h3>Make the Dough:</h3>
-                <ol>
-                    <li>Heat the milk until lukewarm.</li>
-                    <li>Dissolve the yeast in the milk. Add sugar, cardamom, vanilla, salt, egg, and two-thirds of the flour. Mix well by hand or with a mixer.</li>
-                    <li>Stir in the softened butter, then gradually mix in the remaining flour while kneading. Adjust flour if needed.</li>
-                    <li>Knead the dough for about 5 minutes until elastic. Cover the dough and let it rise until doubled in size, about 40 to 60 minutes.</li>
-                    <li>Roll the dough into a cylinder and cut into 16–24 pieces, depending on the desired size.</li>
-                    <li>Roll each piece into a ball and place on a baking tray. Cover and let rise for 30 minutes.</li>
-                    <li>Preheat oven to 435°F (225°C).</li>
-                    <li>Brush each bun with whisked egg.</li>
-                    <li>Bake in the middle of the oven for 10–12 minutes, until golden brown. Cool on a wire rack.</li>
-                </ol>
-
-                <h3>Prepare the Filling:</h3>
-                <ol>
-                    <li>Blend almonds and sugar in a food processor until a soft marzipan-like consistency forms.</li>
-                    <li>Add milk (or egg whites) and pulse a few more times until incorporated.</li>
-                </ol>
-
-                <h3>Assemble the Semlor:</h3>
-                <ol>
-                    <li>Cut off the top of each bun.</li>
-                    <li>Pipe or spoon the almond filling (or jam) onto the base of each bun.</li>
-                    <li>Whip the cream with vanilla sugar and add it on top of the almond filling, using a spoon or piping bag.</li>
-                    <li>Place the bun tops back on. Optionally, use a heart-shaped cutter or scissors to modify the shape.</li>
-                    <li>Dust with powdered sugar before serving.</li>
-                </ol>
-                
-                <h2>Preparation Time:</h2>
-                <div class="time-info">
-                    <p><strong>Preparation Time:</strong> 45 minutes</p>
-                    <p><strong>Cooking Time:</strong> 10–12 minutes</p>
-                    <p><strong>Resting Time:</strong> 1 hour 10 minutes</p>
-                    <p><strong>Total Time:</strong> 2 hours 5 minutes</p>
-                    <p><strong>Yield:</strong> 24 buns</p>
-                </div>
-            </div>
+        <article>
+            <img src="images/food/semlor.jpeg" alt="Swedish Fat Tuesday Buns">
+            <h2>Swedish Semlor (Fat Tuesday Buns)</h2>
+            <p>Traditional cardamom buns filled with almond paste and whipped cream, traditionally served before Lent.</p>
+            <a href="recipes/semlor.html" aria-label="View full recipe for Swedish Semlor">View Recipe</a>
         </article>
 
         <!-- Recipe Card 5 -->
-        <article class="recipe-card" data-recipe="smorgastarta" data-translatable="true">
-            <div class="recipe-preview">
-                <h2>Smörgåstårta (Swedish Sandwich Cake)</h2>
-                <p class="recipe-description">An elegant savory "cake" made with layers of bread, seafood, and creamy fillings - perfect for celebrations.</p>
-                <button class="expand-button" aria-label="Show full recipe">View Recipe</button>
-            </div>
-            <div class="recipe-full">
-                <div class="recipe-header">
-                    <h2>Smörgåstårta (Swedish Sandwich Cake)</h2>
-                    <div class="recipe-controls">
-                        <button class="collapse-button" aria-label="Hide recipe">Close</button>
-                    </div>
-                </div>
-                <h2>Ingredients:</h2>
-                <h3>Base:</h3>
-                <ul>
-                    <li>24 slices white bread</li>
-                </ul>
-
-                <h3>Filling 1:</h3>
-                <ul>
-                    <li>3 tbsp crème fraîche</li>
-                    <li>1 tbsp Dijon mustard</li>
-                    <li>150 g smoked salmon</li>
-                    <li>50 g arugula</li>
-                </ul>
-
-                <h3>Filling 2:</h3>
-                <ul>
-                    <li>6 hard-boiled eggs</li>
-                    <li>2 tbsp crème fraîche</li>
-                    <li>3 tbsp mayonnaise</li>
-                    <li>1 tbsp Dijon mustard</li>
-                    <li>1 tbsp fresh dill or chives</li>
-                </ul>
-
-                <h3>Filling 3:</h3>
-                <ul>
-                    <li>125 g cream cheese</li>
-                    <li>2 tbsp crème fraîche</li>
-                    <li>200 g peeled shrimp</li>
-                    <li>50 g arugula</li>
-                </ul>
-
-                <h3>Topping:</h3>
-                <ul>
-                    <li>250 g cream cheese</li>
-                    <li>4 tbsp crème fraîche</li>
-                    <li>1 boiled egg</li>
-                    <li>1 cucumber</li>
-                    <li>4 radishes</li>
-                    <li>½ lemon</li>
-                    <li>5 slices smoked salmon</li>
-                    <li>100 g peeled shrimp</li>
-                    <li>Fresh dill</li>
-                </ul>
-                
-                <h2>Instructions:</h2>
-                <div class="language-buttons">
-                    <button class="language-btn" data-lang="default">Normal</button>
-                    <button class="language-btn active" data-lang="chef">ChefSpeak</button>
-                </div>
-                <h3>Assemble the Base and First Filling:</h3>
-                <ol>
-                    <li>Cut off the crusts of the bread slices. Arrange six slices in a rectangle on a platter.</li>
-                    <li>Mix crème fraîche and Dijon mustard, then spread evenly over the bread.</li>
-                    <li>Layer smoked salmon evenly on top, followed by arugula.</li>
-                    <li>Add another layer of six bread slices on top.</li>
-                </ol>
-
-                <h3>Prepare the Second Filling:</h3>
-                <ol>
-                    <li>Peel and mash the boiled eggs in a bowl.</li>
-                    <li>Mix with crème fraîche, mayonnaise, mustard, and dill (or chives).</li>
-                    <li>Spread evenly over the bread layer.</li>
-                    <li>Add six more slices of bread on top, pressing down slightly.</li>
-                </ol>
-
-                <h3>Prepare the Third Filling:</h3>
-                <ol>
-                    <li>Mix cream cheese and crème fraîche.</li>
-                    <li>Spread the mixture evenly over the bread.</li>
-                    <li>Top with shrimp and arugula.</li>
-                    <li>Add six more slices of bread on top, pressing down slightly.</li>
-                </ol>
-
-                <h3>Finish and Decorate the Cake:</h3>
-                <ol>
-                    <li>Mix cream cheese and crème fraîche, then spread evenly over the top and sides of the cake.</li>
-                    <li>Insert a few toothpicks on top to hold plastic wrap in place, then cover and refrigerate for at least one hour.</li>
-                    <li>Slice the boiled egg, cucumber, radishes, and lemon.</li>
-                    <li>Decorate the top with egg slices, smoked salmon, shrimp, cucumber, radishes, and fresh dill. Optional: Garnish the sides with additional dill or arugula.</li>
-                </ol>
-                
-                <h2>Preparation Time:</h2>
-                <div class="time-info">
-                    <p><strong>Preparation Time:</strong> 30 minutes</p>
-                    <p><strong>Resting Time:</strong> 1 hour</p>
-                    <p><strong>Total Time:</strong> 1 hour 30 minutes</p>
-                    <p><strong>Yield:</strong> Serves 10</p>
-                </div>
-            </div>
+        <article>
+            <img src="images/food/smorgastarta.jpeg" alt="Swedish Sandwich Cake">
+            <h2>Smörgåstårta (Swedish Sandwich Cake)</h2>
+            <p>An elegant savory "cake" made with layers of bread, seafood, and creamy fillings - perfect for celebrations.</p>
+            <a href="recipes/smorgastarta.html" aria-label="View full recipe for Smörgåstårta">View Recipe</a>
         </article>
 
         <!-- Recipe Card 6 -->
-        <article class="recipe-card" data-recipe="pannkakstarta" data-translatable="true">
-            <div class="recipe-preview">
-                <h2>Pannkakstårta (Swedish Pancake Cake)</h2>
-                <p class="recipe-description">A stunning layered dessert made with thin Swedish pancakes, cream, and fresh berries.</p>
-                <button class="expand-button" aria-label="Show full recipe">View Recipe</button>
-            </div>
-            <div class="recipe-full">
-                <div class="recipe-header">
-                    <h2>Pannkakstårta (Swedish Pancake Cake)</h2>
-                    <div class="recipe-controls">
-                        <button class="collapse-button" aria-label="Hide recipe">Close</button>
-                    </div>
-                </div>
-                <h2>Ingredients:</h2>
-                <h3>Pancakes:</h3>
-                <ul>
-                    <li>4 eggs</li>
-                    <li>3 ⅓ cups milk</li>
-                    <li>1 tbsp sugar</li>
-                    <li>1 tsp cardamom</li>
-                    <li>1 cup flour</li>
-                    <li>½ tsp salt</li>
-                    <li>2 tbsp butter</li>
-                </ul>
-
-                <h3>Filling:</h3>
-                <ul>
-                    <li>5 oz cream cheese</li>
-                    <li>1 ¼ cups heavy cream</li>
-                    <li>⅔ cup powdered sugar</li>
-                    <li>2 tsp vanilla sugar (or extract)</li>
-                    <li>2 cups fresh strawberries</li>
-                    <li>1 cup strawberry jam</li>
-                    <li>Blueberries for decorating (optional)</li>
-                </ul>
-                
-                <h2>Instructions:</h2>
-                <div class="language-buttons">
-                    <button class="language-btn" data-lang="default">Normal</button>
-                    <button class="language-btn active" data-lang="chef">ChefSpeak</button>
-                </div>
-                <h3>Make the Pancakes:</h3>
-                <ol>
-                    <li>Pour half of the milk into a bowl.</li>
-                    <li>Add eggs, salt, sugar, cardamom, and all of the flour. Stir until smooth with no clumps.</li>
-                    <li>Add the remaining milk and mix again.</li>
-                    <li>Melt the butter and stir it into the batter.</li>
-                    <li>Heat a pan over medium heat and add a little butter (only needed for the first pancake).</li>
-                    <li>When the butter is light brown, pour batter into the pan and tilt to spread evenly.</li>
-                    <li>Cook until edges turn brown, then flip and cook until golden on both sides. Repeat for all pancakes.</li>
-                </ol>
-
-                <h3>Prepare the Filling and Assemble the Cake:</h3>
-                <ol>
-                    <li>Whisk cream cheese, heavy cream, powdered sugar, and vanilla until stiff peaks form. Slice the strawberries.</li>
-                    <li>Arrange 4–5 pancakes (or 5–6 for larger pancakes) in a circle on a large plate, letting the edges hang over the sides. These will fold over the cake at the end.</li>
-                    <li>Place one pancake in the center of the plate. Spread a layer of cream mixture on it, add sliced strawberries, and cover with another pancake.</li>
-                    <li>Spread strawberry jam on the next pancake and layer it over the stack.</li>
-                    <li>Continue alternating layers of cream with strawberries and layers with jam until all pancakes are used (usually 7–8 pancakes in total).</li>
-                    <li>Fold the overhanging pancake edges over the stack to enclose the cake.</li>
-                    <li>Place a heavy plate on top and refrigerate for at least two hours (overnight is best). Save extra cream filling and strawberries for topping.</li>
-                    <li>Before serving, spread the remaining cream filling over the cake and decorate with fresh berries.</li>
-                </ol>
-                
-                <h2>Preparation Time:</h2>
-                <div class="time-info">
-                    <p><strong>Preparation Time:</strong> 30 minutes</p>
-                    <p><strong>Cooking Time:</strong> 30 minutes</p>
-                    <p><strong>Resting Time:</strong> 2 hours</p>
-                    <p><strong>Total Time:</strong> 3 hours</p>
-                    <p><strong>Yield:</strong> Serves 8</p>
-                </div>
-            </div>
+        <article>
+            <img src="images/food/pannkakstarta.jpg" alt="Swedish Pancake Cake">
+            <h2>Pannkakstårta (Swedish Pancake Cake)</h2>
+            <p>A stunning layered dessert made with thin Swedish pancakes, cream, and fresh berries.</p>
+            <a href="recipes/pannkakstarta.html" aria-label="View full recipe for Pannkakstårta">View Recipe</a>
         </article>
 
         <!-- Recipe Card 7 -->
-        <article class="recipe-card" data-recipe="exploding-shrimp" data-translatable="true">
-            <div class="recipe-preview">
-                <h2>Swedish Chef's Exploding Popcorn Shrimp</h2>
-                <p class="recipe-description">A chaotic fusion of popcorn and shrimp that may or may not result in kitchen mayhem - Bork Bork Bork!</p>
-                <button class="expand-button" aria-label="Show full recipe">View Recipe</button>
-            </div>
-            <div class="recipe-full">
-                <div class="recipe-header">
-                    <h2>Swedish Chef's Exploding Popcorn Shrimp</h2>
-                    <div class="recipe-controls">
-                        <button class="collapse-button" aria-label="Hide recipe">Close</button>
-                    </div>
-                </div>
-
-                <div class="video-container">
-                    <h2>Watch the Master at Work:</h2>
-                    <iframe 
-                        width="560" 
-                        height="315" 
-                        src="https://www.youtube.com/embed/B7UmUX68KtE?si=cPjNgFR2SLoBtza8" 
-                        title="Swedish Chef Makes Popcorn Shrimp" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                        referrerpolicy="strict-origin-when-cross-origin" 
-                        allowfullscreen>
-                    </iframe>
-                </div>
-
-                <h2>Ingredients:</h2>
-                <ul>
-                    <li>1 lb live shrimp (or, you know, regular peeled and deveined shrimp if you're boring)</li>
-                    <li>10 bags of microwave popcorn</li>
-                    <li>1 cup flour</li>
-                    <li>½ cup cornstarch</li>
-                    <li>1 tsp salt</li>
-                    <li>½ tsp black pepper</li>
-                    <li>½ tsp garlic powder</li>
-                    <li>½ tsp paprika</li>
-                    <li>1 cup buttermilk (or milk)</li>
-                    <li>1 egg</li>
-                    <li>Oil for frying</li>
-                    <li>Extra popcorn for garnish</li>
-                </ul>
-
-                <h2>Instructions:</h2>
-                <div class="language-buttons">
-                    <button class="language-btn" data-lang="default">Normal</button>
-                    <button class="language-btn active" data-lang="chef">ChefSpeak</button>
-                </div>
-                <ol>
-                    <li><em>"Hëër dê shrîmpéé! Ödêédöø Shrîmpéé!!!! Höhöhöhö."</em> – Greet your shrimp.</li>
-                    <li><em>"Plööppen in de shrîmpéé!"</em> – Drop the shrimp into a pot! If they resist, ignore them.</li>
-                    <li><em>"Bøïllïnn ån bürndê dê shrîmpéé!"</em> – If you actually want to cook the shrimp in boiling water, simmer for 2–3 minutes until pink. Alternatively, drain and pat dry for frying.</li>
-                    <li><em>"Stîiikkïn øøn dü mîcrøøwaveeevöövêê! Füür måkkïn dê pöpcørn!"</em> – Jam ALL TEN BAGS of popcorn into the microwave! Press every button in sight. Wait in anticipation—what could go wrong?</li>
-                    <li>At this point, a musical number might break out. Allow your kitchen utensils to participate.</li>
-                    <li><em>"Døødabadee shøøshî an de søøshî."</em> – (This means... uh... something? Just keep cooking!)</li>
-                </ol>
-
-                <aside class="practical-note">
-                    <button class="practical-toggle">
-                        <span class="toggle-text">Show practical steps</span>
-                        <span class="toggle-icon">▼</span>
-                    </button>
-                    <div class="practical-content">
-                        <p><strong>Practical cooking steps:</strong></p>
-                        <ul>
-                            <li>While awaiting the popcorn apocalypse, prepare the shrimp: In one bowl, mix flour, cornstarch, salt, pepper, garlic powder, and paprika. In another bowl, whisk buttermilk and egg. Crush some popcorn (not all 10 bags, save some for snacking!) into small crumbs.</li>
-                            <li>Dip each shrimp into the flour mixture, then into the buttermilk mixture, and finally roll it in crushed popcorn for maximum crispiness!</li>
-                            <li>Heat oil in a deep pan to 350°F (175°C).</li>
-                            <li>Carefully drop the popcorn-coated shrimp into the hot oil. Fry for 2–3 minutes, or until golden brown and crispy.</li>
-                        </ul>
-                    </div>
-                </aside>
-
-                <ol start="11">
-                    <li>Garnish fried shrimp with extra popcorn and serve.</li>
-                    <li><em>"Å vür då wêrre dü gürredêé pöpcørn shrîmpéés!"</em> – And that's how you make popcorn shrimp!</li>
-                </ol>
-                
-                <h2>Preparation Time:</h2>
-                <div class="time-info">
-                    <p><strong>Preparation Time:</strong> 15 minutes</p>
-                    <p><strong>Cooking Time:</strong> 10 minutes</p>
-                    <p><strong>Total Time:</strong> 25 minutes (or infinite, depending on chaos level)</p>
-                    <p><strong>Yield:</strong> Serves 4 (or one hungry shrimp)</p>
-                </div>
-            </div>
+        <article>
+            <img src="images/food/popcorn_shrimp.png" alt="Swedish Chef's Exploding Popcorn Shrimp">
+            <h2>Swedish Chef's Exploding Popcorn Shrimp</h2>
+            <p>A chaotic fusion of popcorn and shrimp that may or may not result in kitchen mayhem - Bork Bork Bork!</p>
+            <a href="recipes/exploding-shrimp.html" aria-label="View full recipe for Swedish Chef's Exploding Popcorn Shrimp">View Recipe</a>
         </article>
-    </div>
+    </section>
 </main>
 <footer>
     <p>&copy; 2025 The Great Swedish Bake Off</p>
