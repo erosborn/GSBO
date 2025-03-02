@@ -16,21 +16,41 @@
             <li><a href="../recipes.html" class="active">Recipes</a></li>
             <li><a href="../shop.html">Shop</a></li>
             <li><a href="../bakers.html">The Bakers</a></li>
-            <li><a href="../watch.html">Watch</a></li>
             <li><a href="../about.html">About</a></li>
         </ul>
     </nav>
 </header>
 <main>
-    <article data-translatable="true">
-        <a href="../recipes.html">← Back to Recipes</a>
-        <h2>Classic St Lucia Buns (Lussekatter)</h2>
-        <figure>
-            <img src="../images/food/lussekatter.jpg" alt="Classic St Lucia Buns">
-            <figcaption>Traditional saffron-flavored sweet rolls for St. Lucia Day</figcaption>
-        </figure>
-        
-        <section>
+    <div id="recipe-header">
+        <img src="../images/food/lussekatter.jpg" alt="Classic St Lucia Buns">
+        <h2>Lussekatter - <span>Classic St Lucia Buns</span></h2>
+    </div>
+    
+    <section id="recipe-intro">
+        <a href="../recipes.html" id="back">← Back to Recipes</a>
+        <p>Traditional saffron-flavored sweet rolls served on December 13th to celebrate St. Lucia Day.</p>
+        <dl>
+            <div>
+                <dt>Preparation:</dt>
+                <dd>1 hr</dd>
+            </div>
+            <div>
+                <dt>Cooking Time:</dt>
+                <dd>10 mins</dd>
+            </div>
+            <div>
+                <dt>Total Time:</dt>
+                <dd>2 hrs 30 mins</dd>
+            </div>
+            <div>
+                <dt>Yield:</dt>
+                <dd>40 buns</dd>
+            </div>
+        </dl>
+    </section>
+
+    <section id="recipe-body">
+        <aside id="ingredients">
             <h2>Ingredients:</h2>
             <ul>
                 <li>3/4 cup butter or margarine</li>
@@ -45,47 +65,35 @@
                 <li>1 dl (about 1/3 cup + 1 tbsp) raisins</li>
                 <li>1 egg (for egg wash)</li>
             </ul>
-        </section>
+        </aside>
+
+        <article>
+            <h2>Instructions:</h2>
+            <fieldset>
+                <input type="radio" id="normal" name="language" checked>
+                <input type="radio" id="chef" name="language">
+                <div>
+                    <label for="normal">Normal</label>
+                    <label for="chef">ChefSpeak</label>
+                </div>
+            </fieldset>
+            <section>
+                <ol>
+                    <li>Melt butter in a saucepan. Add milk and heat until lukewarm.</li>
+                    <li>Pour the milk and butter mixture into a bowl. Add yeast and stir until dissolved.</li>
+                    <li>Add salt, sugar, saffron, cardamom, and egg. Mix well.</li>
+                    <li>Gradually add flour while mixing. Mix until the dough pulls away from the bowl.</li>
+                    <li>Cover and let rise for 30 minutes.</li>
+                    <li>Lightly flour a surface. Knead the dough, adding more flour if needed.</li>
+                    <li>Divide dough into four parts. Roll each into a cylinder and cut into strips. Shape into "S" forms. Add raisins for decoration.</li>
+                    <li>Place shaped dough on a greased or parchment-lined baking sheet. Let rise for 30 minutes.</li>
+                    <li>Preheat oven to 435°F (225°C).</li>
+                    <li>Brush buns with whisked egg. Bake for 7–10 minutes until golden brown.</li>
+                </ol>
+            </section>
+        </article>
+    </section>
         
-        <h2>Instructions:</h2>
-        <fieldset>
-            <input type="radio" id="normal" name="language" checked>
-            <input type="radio" id="chef" name="language">
-            <div>
-                <label for="normal">Normal</label>
-                <label for="chef">ChefSpeak</label>
-            </div>
-        </fieldset>
-        <section>
-            <ol>
-                <li>Melt butter in a saucepan. Add milk and heat until lukewarm.</li>
-                <li>Pour the milk and butter mixture into a bowl. Add yeast and stir until dissolved.</li>
-                <li>Add salt, sugar, saffron, cardamom, and egg. Mix well.</li>
-                <li>Gradually add flour while mixing. Mix until the dough pulls away from the bowl.</li>
-                <li>Cover and let rise for 30 minutes.</li>
-                <li>Lightly flour a surface. Knead the dough, adding more flour if needed.</li>
-                <li>Divide dough into four parts. Roll each into a cylinder and cut into strips. Shape into "S" forms. Add raisins for decoration.</li>
-                <li>Place shaped dough on a greased or parchment-lined baking sheet. Let rise for 30 minutes.</li>
-                <li>Preheat oven to 435°F (225°C).</li>
-                <li>Brush buns with whisked egg. Bake for 7–10 minutes until golden brown.</li>
-            </ol>
-        </section>
-        
-        <h2>Preparation Time:</h2>
-        <section>
-            <dl>
-                <dt>Preparation Time</dt>
-                <dd><time datetime="PT1H">1 hour</time></dd>
-                <dt>Cooking Time</dt>
-                <dd><time datetime="PT10M">10 minutes</time></dd>
-                <dt>Resting Time</dt>
-                <dd><time datetime="PT1H">1 hour</time></dd>
-                <dt>Total Time</dt>
-                <dd><time datetime="PT2H30M">2 hours 30 minutes</time></dd>
-            </dl>
-            <p><strong>Yield:</strong> 40 buns</p>
-        </section>
-    </article>
 </main>
 <footer>
     <p>&copy; 2025 The Great Swedish Bake Off</p>

@@ -3,6 +3,10 @@
    License: none (public domain)
 */
 
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -49,6 +53,44 @@ table {
 
 
 /* -------------------------------------------------------------------------- styles start here */
+
+@font-face {
+    font-family: 'SwedenSans';
+    src: url('fonts/SwedenSansRegular.woff2') format('woff2'),
+         url('fonts/SwedenSansRegular.otf') format('opentype');
+    font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}
+
+@font-face {
+    font-family: 'SwedenSans';
+    src: url('fonts/SwedenSansBook.woff2') format('woff2'),
+         url('fonts/SwedenSansBook.otf') format('opentype');
+    font-style: normal;
+    font-weight: 300;
+    text-rendering: optimizeLegibility;
+}
+
+@font-face {
+    font-family: 'SwedenSans';
+    src: url('fonts/SwedenSansSemiBold.woff2') format('woff2'),
+         url('fonts/SwedenSansSemiBold.otf') format('opentype');
+    font-style: normal;
+    font-weight: 600;
+    text-rendering: optimizeLegibility;
+}
+
+@font-face {
+    font-family: 'SwedenSans';
+    src: url('fonts/SwedenSansBold.woff2') format('woff2'),
+         url('fonts/SwedenSansBold.otf') format('opentype');
+    font-style: normal;
+    font-weight: 700;
+    text-rendering: optimizeLegibility;
+}
+
+
 :root {
     /* Colors */
     --white: #fff;
@@ -60,19 +102,24 @@ table {
     --grain-yellow: #e8e3d1;
     --pale-yellow: #ffd481;
     --text-color: #333;
+    
+    /* Fonts */
+    --sweden-sans: 'SwedenSans', sans-serif;
+    --sweden-sans-bold: 'SwedenSans', sans-serif;
+    --sweden-sans-book: 'SwedenSans', sans-serif;
+    --sweden-sans-semibold: 'SwedenSans', sans-serif;
 }
 
-/* Base styles */
+/* -------------------------------------------------------------------------- Base styles */
 body {
-    font-family: 'Nunito', sans-serif;
-    line-height: 1.6;
+    font-family: var(--sweden-sans);
     color: var(--text-color);
     background-color: var(--grain-yellow);
+    line-height: 1.5;
 }
 
-/* Typography */
 h1 {
-    font-family: 'Playfair Display', serif;
+    font-family: var(--sweden-sans-bold);
     font-size: 3.5rem;
     font-weight: 700;
     margin-bottom: 1.5rem;
@@ -81,21 +128,35 @@ h1 {
 }
 
 h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.5rem;
+    font-family: var(--sweden-sans-bold);
+    font-size: 1.5rem;
     font-weight: 700;
-    margin-bottom: 1.2rem;
     color: var(--dawn-blue);
 }
 
 h3 {
+    font-family: var(--sweden-sans-bold);
     font-size: 1.8rem;
     font-weight: 700;
     margin-bottom: 1rem;
     color: var(--dark-dawn-blue);
 }
 
-/* Header & Navigation */
+em {
+    font-weight: 700;
+}
+
+main {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 0 30px;
+    background-color: var(--grain-yellow);
+    position: relative;
+    z-index: 0;
+    /* margin-top: -10px; */
+}
+
+/* --------------------------------------------------------------------------Header & Navigation */
 header {
     background-color: var(--white);
     padding: 2rem 0 0;
@@ -160,87 +221,295 @@ nav a.active:hover::after {
     border-top-color: var(--dawn-blue);
 }
 
-/* Main content */
-main {
-    max-width: 1400px;
-    margin: 0 auto;
-    background-color: var(--grain-yellow);
+/* -------------------------------------------------------------------------- Temporarily hide unfinished nav links */
+nav a[href$="shop.html"] {
+    opacity: 0.5;
+    pointer-events: none;
     position: relative;
-    z-index: 0;
-    margin-top: -10px;
 }
 
-/* Homepage sections */
-main > section:first-of-type {
+nav a[href$="shop.html"]::before {
+    content: '(Coming Soon)';
+    position: absolute;
+    font-size: 0.7rem;
+    bottom: 0.3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+
+
+/* -------------------------------------------------------------------------- home */
+
+
+
+/* -------------------------------------------------------------------------- recipes menu */
+
+#recipes-grid {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+    padding: 20px 0;
+    box-sizing: border-box;
+}
+
+#recipes-grid > a {
+    flex: 0 0 33.333%;
+    max-width: 33.333%;
+    padding: 0 15px;
+    margin-bottom: 30px;
     position: relative;
-    text-align: center;
-    padding: 2rem 2rem;
-    background-color: var(--white);
-}
-
-main > section:first-of-type img {
-    width: 100%;
-    height: 500px;
-    object-fit: cover;
-    margin-bottom: 2rem;
-}
-
-main > section:first-of-type button {
-    display: inline-block;
-    padding: 1rem 2.5rem;
-    background-color: var(--sweden-blue);
-    color: var(--white);
     text-decoration: none;
-    font-weight: 700;
+    display: block;
+    box-sizing: border-box;
+}
+
+#recipes-grid figure {
+    margin: 0;
+    position: relative;
+    overflow: hidden;
+    z-index: 10;
+}
+
+#recipes-grid figure img {
+    width: 100%;
+    height: auto;
+    transition: all 0.4s ease-in-out;
+}
+
+#recipes-grid > a > div {
+    background-color: var(--white);
+    margin: -30px 10px 0;
+    padding: 20px 10px 12px;
+    position: relative;
+    z-index: 15;
+    text-align: center;
+}
+
+#recipes-grid > a > div:after {
+    content: "";
+    display: block;
+    border: 2px solid var(--white);
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    transition: all 0.15s ease-in-out;
+}
+
+#recipes-grid > a:hover > div:after {
+    top: -6px;
+    right: -6px;
+    bottom: -6px;
+    left: -6px;
+}
+
+#recipes-grid > a:hover figure img {
+    transform: scale(1.1);
+}
+
+#recipes-grid h2 {
+    color: var(--sweden-blue);
+    text-align: center;
+    line-height: 1.15;
+}
+
+#recipes-grid h4 {
+    font-weight: normal;
+    font-style: italic;
+    font-size: 1.25rem;
+    line-height: 1.15;
+    text-transform: uppercase;
+    color: var(--sweden-blue);
+}
+
+#recipes-grid > a > div > span {
+    display: inline-block;
+    background-color: var(--dawn-blue);
+    color: var(--pale-yellow);
+    height: 24px;
+    padding: 0 25px;
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+    line-height: 28px;
+    text-align: center;
+    text-transform: uppercase;
+    white-space: nowrap;
+    font-size: clamp(10px, 2vw, 16px);
+}
+
+#recipes-grid p {
+    color: var(--text-color);
+    line-height: 1.4;
+    margin: 0.75rem;
+    text-align: left;
+}
+
+/* -------------------------------------------------------------------------- recipe pages*/
+#recipe-header {
+    position: relative;
+    margin-bottom: 5rem;
+    text-align: center;
+}
+#recipe-header img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    max-height: 400px;
+    object-fit: cover;
+}
+#recipe-header h2 {
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--sweden-blue);
+    border: none;
+    box-shadow:
+        0 0 0 4px var(--white),
+        0 0 0 6px var(--sweden-blue);
+    color: var(--white);
+    padding: 0.75rem 7rem;
+    margin: 0;
+    font-family: var(--sweden-sans);
+    font-weight: normal;
     text-transform: uppercase;
     letter-spacing: 1px;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    text-wrap: nowrap;
+}
+#recipe-header h2 span {
+    font-weight: 300;
+    font-style: italic;
 }
 
-main > section:first-of-type button:hover {
-    background-color: var(--dawn-blue);
-}
-
-/* Recipe sections */
-main > section {
-    padding: 3rem 2rem;
-}
-
-/* Recipe cards */
-article {
-    background: var(--white);
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-article img {
+#recipe-header > div {
+    position: relative;
     width: 100%;
-    height: 300px;
-    object-fit: cover;
+    height: 400px; /* Fixed banner height */
+    overflow: hidden;
+    background: #000; /* fallback background */
 }
 
-article h3 {
-    padding: 1.5rem 1.5rem 0.5rem;
-    font-size: 1.4rem;
+#recipe-header > div iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
 }
 
-article p {
-    padding: 0 1.5rem 1.5rem;
-}
-
-/* Links */
-section a {
+/* Style for the back link */
+#back {
+    display: inline-block;
+    margin: 1rem 0;
     color: var(--sweden-blue);
     text-decoration: none;
     font-weight: 700;
+    font-size: 1rem;
 }
 
-section a:hover {
-    text-decoration: underline;
+#recipe-intro {
+    max-width: 1000px;
+    margin: 2rem auto;
+    text-align: center;
 }
 
-/* Footer */
+#recipe-intro p {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    margin: 0 0 1.5rem;
+}
+
+#recipe-intro dl {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 2rem;
+    margin: 2rem auto;
+    padding: 2rem 0;
+    border-top: 1px solid var(--pale-yellow);
+    border-bottom: 1px solid var(--pale-yellow);
+    text-align: center;
+    box-sizing: border-box;
+}
+
+#recipe-intro dl > div {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0;
+}
+
+#recipe-intro dl dt {
+    color: var(--sweden-blue);
+    font-weight: bold;
+    margin: 0;
+}
+
+#recipe-intro dl dd {
+    color: var(--text-color);
+    margin: 0;
+}
+
+
+#recipe-intro dl dd span {
+    font-style: italic;
+}
+
+
+/* Layout for Ingredients and Instructions using an ID */
+#recipe-body {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+#recipe-body #ingredients,
+#recipe-body article {
+    background-color: var(--white);
+    padding: 1.5rem;
+    border: 1px solid #ddd;
+    flex: 1 1 300px;
+}
+#recipe-body article {
+    flex: 2 1 500px;
+}
+
+/* Toggle fieldset styling remains the same */
+fieldset {
+    border: none;
+    margin: 1rem 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+fieldset input[type="radio"] {
+    display: none;
+}
+fieldset label {
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--sweden-blue);
+    border-radius: 4px;
+    transition: background 0.3s;
+}
+fieldset input[type="radio"]:checked + label {
+    background-color: var(--sweden-blue);
+    color: var(--white);
+}
+
+
+
+/* -------------------------------------------------------------------------- Footer */
 footer {
     background-color: var(--dawn-blue);
     color: var(--white);
@@ -262,198 +531,5 @@ footer a:hover {
     color: var(--sweden-yellow);
 }
 
-/* Grid layouts */
-/* Common styles for pages with single sections */
-main > section {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 3rem 2rem;
-}
 
-/* Recipe and Bakers grids */
-#recipes-grid,
-#bakers-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2.5rem;
-}
-
-#recipes-grid > h2,
-#bakers-grid > h2 {
-    grid-column: 1 / -1;
-    margin-bottom: 2rem;
-}
-
-/* Shop page */
-main > section:last-of-type:not(:only-child) {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-    padding: 0 2rem;
-}
-
-main > section:last-of-type article {
-    background: var(--white);
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
-}
-
-main > section:last-of-type article:hover {
-    transform: translateY(-5px);
-}
-
-main > section:last-of-type article img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-}
-
-main > section:last-of-type article div {
-    padding: 1.5rem;
-}
-
-main > section:last-of-type h3 {
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
-}
-
-main > section:last-of-type p:nth-of-type(2) {
-    color: var(--dawn-blue);
-    font-weight: 700;
-    font-size: 1.1rem;
-    margin: 1rem 0;
-}
-
-main > section:last-of-type a {
-    display: inline-block;
-    padding: 0.8rem 1.5rem;
-    background-color: var(--pale-yellow);
-    color: var(--text-color);
-    text-decoration: none;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: background-color 0.3s ease;
-}
-
-main > section:last-of-type a:hover {
-    background-color: var(--grain-yellow);
-}
-
-/* Recipe page layout */
-main > article {
-    max-width: 800px;  /* Narrower for better readability */
-    margin: 0 auto;
-    padding: 3rem 2rem;
-    background-color: var(--white);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
-/* Recipe title */
-main > article > h2 {
-    font-size: 2.8rem;
-    text-align: center;
-    margin-bottom: 2rem;
-}
-
-/* Back link */
-main > article > a {
-    display: inline-block;
-    margin-bottom: 2rem;
-    color: var(--sweden-blue);
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-/* Recipe hero image */
-main > article > figure {
-    margin: -3rem -2rem 3rem;  /* Extend image full width */
-}
-
-main > article > figure img {
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
-}
-
-main > article > figure figcaption {
-    text-align: center;
-    color: var(--text-color);
-    font-style: italic;
-    padding: 1rem 2rem;
-    background-color: var(--grain-yellow);
-}
-
-/* Recipe sections */
-main > article section {
-    margin-bottom: 3rem;
-}
-
-main > article section h2 {
-    font-size: 1.8rem;
-    margin-bottom: 1.5rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 2px solid var(--grain-yellow);
-}
-
-main > article section h3 {
-    font-size: 1.4rem;
-    color: var(--dawn-blue);
-    margin: 2rem 0 1rem;
-}
-
-/* Lists */
-main > article ul,
-main > article ol {
-    margin-left: 1.5rem;
-    margin-bottom: 2rem;
-    line-height: 1.8;
-}
-
-main > article ul {
-    list-style: disc;
-}
-
-main > article ol {
-    list-style: decimal;
-}
-
-main > article li {
-    margin-bottom: 0.8rem;
-    padding-left: 0.5rem;
-}
-
-/* Preparation time */
-main > article dl {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 1rem 2rem;
-    margin: 2rem 0;
-    padding: 2rem;
-    background-color: var(--grain-yellow);
-    border-radius: 4px;
-}
-
-main > article dt {
-    font-weight: 700;
-    color: var(--dawn-blue);
-}
-
-/* Language toggle */
-main > article fieldset {
-    border: none;
-    margin: 2rem 0;
-    padding: 1rem;
-    background-color: var(--grain-yellow);
-    border-radius: 4px;
-}
-
-main > article fieldset div {
-    display: flex;
-    gap: 2rem;
-    justify-content: center;
-}
 

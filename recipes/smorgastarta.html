@@ -16,77 +16,84 @@
             <li><a href="../recipes.html" class="active">Recipes</a></li>
             <li><a href="../shop.html">Shop</a></li>
             <li><a href="../bakers.html">The Bakers</a></li>
-            <li><a href="../watch.html">Watch</a></li>
             <li><a href="../about.html">About</a></li>
         </ul>
     </nav>
 </header>
 <main>
-    <article data-translatable="true">
-        <a href="../recipes.html">← Back to Recipes</a>
+    <div id="recipe-header">
+        <img src="../images/food/smorgastarta.jpg" alt="Swedish Sandwich Cake">
         <h2>Smörgåstårta (Swedish Sandwich Cake)</h2>
-        <figure>
-            <img src="../images/food/smorgastarta.jpg" alt="Swedish Sandwich Cake">
-            <figcaption>An elegant savory Swedish sandwich cake layered with seafood and creamy fillings</figcaption>
-        </figure>
-        
-        <section>
+    </div>
+    <section id="recipe-intro">
+        <a href="../recipes.html" id="back">← Back to Recipes</a>
+        <p>An elegant savory "cake" made with layers of bread, seafood, and creamy fillings - perfect for celebrations.</p>
+        <dl>
+            <div>
+                <dt>Preparation:</dt>
+                <dd>30 mins</dd>
+            </div>
+            <div>
+                <dt>Resting time:</dt>
+                <dd>1 hr</dd>
+            </div>
+            <div>
+                <dt>Total time:</dt>
+                <dd>1 hr 30 mins</dd>
+            </div>
+            <div>
+                <dt>Yield:</dt>
+                <dd>Serves 10</dd>
+            </div>
+        </dl>
+    </section>
+
+    
+    <section id="recipe-body">
+        <aside id="ingredients">
             <h2>Ingredients:</h2>
-            <section>
-                <h3>Base:</h3>
-                <ul>
-                    <li>24 slices white bread</li>
-                </ul>
-            </section>
-            
-            <section>
-                <h3>Filling 1:</h3>
-                <ul>
-                    <li>3 tbsp crème fraîche</li>
-                    <li>1 tbsp Dijon mustard</li>
-                    <li>150 g smoked salmon</li>
-                    <li>50 g arugula</li>
-                </ul>
-            </section>
-
-            <section>
-                <h3>Filling 2:</h3>
-                <ul>
-                    <li>6 hard-boiled eggs</li>
-                    <li>2 tbsp crème fraîche</li>
-                    <li>3 tbsp mayonnaise</li>
-                    <li>1 tbsp Dijon mustard</li>
-                    <li>1 tbsp fresh dill or chives</li>
-                </ul>
-            </section>
-
-            <section>
-                <h3>Filling 3:</h3>
-                <ul>
-                    <li>125 g cream cheese</li>
-                    <li>2 tbsp crème fraîche</li>
-                    <li>200 g peeled shrimp</li>
-                    <li>50 g arugula</li>
-                </ul>
-            </section>
-
-            <section>
-                <h3>Topping:</h3>
-                <ul>
-                    <li>250 g cream cheese</li>
-                    <li>4 tbsp crème fraîche</li>
-                    <li>1 boiled egg</li>
-                    <li>1 cucumber</li>
-                    <li>4 radishes</li>
-                    <li>½ lemon</li>
-                    <li>5 slices smoked salmon</li>
-                    <li>100 g peeled shrimp</li>
-                    <li>Fresh dill</li>
-                </ul>
-            </section>
-        </section>
-
-        <h2>Instructions:</h2>
+            <h3>Base:</h3>
+            <ul>
+                <li>24 slices white bread</li>
+            </ul>
+        
+            <h3>Filling 1:</h3>
+            <ul>
+                <li>3 tbsp crème fraîche</li>
+                <li>1 tbsp Dijon mustard</li>
+                <li>150 g smoked salmon</li>
+                <li>50 g arugula</li>
+            </ul>
+            <h3>Filling 2:</h3>
+            <ul>
+                <li>6 hard-boiled eggs</li>
+                <li>2 tbsp crème fraîche</li>
+                <li>3 tbsp mayonnaise</li>
+                <li>1 tbsp Dijon mustard</li>
+                <li>1 tbsp fresh dill or chives</li>
+            </ul>
+            <h3>Filling 3:</h3>
+            <ul>
+                <li>125 g cream cheese</li>
+                <li>2 tbsp crème fraîche</li>
+                <li>200 g peeled shrimp</li>
+                <li>50 g arugula</li>
+            </ul>
+            <h3>Topping:</h3>
+            <ul>
+                <li>250 g cream cheese</li>
+                <li>4 tbsp crème fraîche</li>
+                <li>1 boiled egg</li>
+                <li>1 cucumber</li>
+                <li>4 radishes</li>
+                <li>½ lemon</li>
+                <li>5 slices smoked salmon</li>
+                <li>100 g peeled shrimp</li>
+                <li>Fresh dill</li>
+            </ul>
+        </aside>
+        <article>
+            <h2>Instructions:</h2>
             <fieldset>
                 <input type="radio" id="normal" name="language" checked>
                 <input type="radio" id="chef" name="language">
@@ -95,51 +102,36 @@
                     <label for="chef">ChefSpeak</label>
                 </div>
             </fieldset>
-        <h3>Assemble the Base and First Filling:</h3>
-        <ol>
-            <li>Cut off the crusts of the bread slices. Arrange six slices in a rectangle on a platter.</li>
-            <li>Mix crème fraîche and Dijon mustard, then spread evenly over the bread.</li>
-            <li>Layer smoked salmon evenly on top, followed by arugula.</li>
-            <li>Add another layer of six bread slices on top.</li>
-        </ol>
-
-        <h3>Prepare the Second Filling:</h3>
-        <ol>
-            <li>Peel and mash the boiled eggs in a bowl.</li>
-            <li>Mix with crème fraîche, mayonnaise, mustard, and dill (or chives).</li>
-            <li>Spread evenly over the bread layer.</li>
-            <li>Add six more slices of bread on top, pressing down slightly.</li>
-        </ol>
-
-        <h3>Prepare the Third Filling:</h3>
-        <ol>
-            <li>Mix cream cheese and crème fraîche.</li>
-            <li>Spread the mixture evenly over the bread.</li>
-            <li>Top with shrimp and arugula.</li>
-            <li>Add six more slices of bread on top, pressing down slightly.</li>
-        </ol>
-
-        <h3>Finish and Decorate the Cake:</h3>
-        <ol>
-            <li>Mix cream cheese and crème fraîche, then spread evenly over the top and sides of the cake.</li>
-            <li>Insert a few toothpicks on top to hold plastic wrap in place, then cover and refrigerate for at least one hour.</li>
-            <li>Slice the boiled egg, cucumber, radishes, and lemon.</li>
-            <li>Decorate the top with egg slices, smoked salmon, shrimp, cucumber, radishes, and fresh dill. Optional: Garnish the sides with additional dill or arugula.</li>
-        </ol>
-        
-        <h2>Preparation Time:</h2>
-        <section>
-            <dl>
-                <dt>Preparation Time</dt>
-                <dd><time datetime="PT30M">30 minutes</time></dd>
-                <dt>Resting Time</dt>
-                <dd><time datetime="PT1H">1 hour</time></dd>
-                <dt>Total Time</dt>
-                <dd><time datetime="PT1H30M">1 hour 30 minutes</time></dd>
-            </dl>
-            <p><strong>Yield:</strong> Serves 10</p>
-        </section>
-    </article>
+            <h3>Assemble the Base and First Filling:</h3>
+            <ol>
+                <li>Cut off the crusts of the bread slices. Arrange six slices in a rectangle on a platter.</li>
+                <li>Mix crème fraîche and Dijon mustard, then spread evenly over the bread.</li>
+                <li>Layer smoked salmon evenly on top, followed by arugula.</li>
+                <li>Add another layer of six bread slices on top.</li>
+            </ol>
+            <h3>Prepare the Second Filling:</h3>
+            <ol>
+                <li>Peel and mash the boiled eggs in a bowl.</li>
+                <li>Mix with crème fraîche, mayonnaise, mustard, and dill (or chives).</li>
+                <li>Spread evenly over the bread layer.</li>
+                <li>Add six more slices of bread on top, pressing down slightly.</li>
+            </ol>
+            <h3>Prepare the Third Filling:</h3>
+            <ol>
+                <li>Mix cream cheese and crème fraîche.</li>
+                <li>Spread the mixture evenly over the bread.</li>
+                <li>Top with shrimp and arugula.</li>
+                <li>Add six more slices of bread on top, pressing down slightly.</li>
+            </ol>
+            <h3>Finish and Decorate the Cake:</h3>
+            <ol>
+                <li>Mix cream cheese and crème fraîche, then spread evenly over the top and sides of the cake.</li>
+                <li>Insert a few toothpicks on top to hold plastic wrap in place, then cover and refrigerate for at least one hour.</li>
+                <li>Slice the boiled egg, cucumber, radishes, and lemon.</li>
+                <li>Decorate the top with egg slices, smoked salmon, shrimp, cucumber, radishes, and fresh dill. Optional: Garnish the sides with additional dill or arugula.</li>
+            </ol>
+        </article>
+    </section>
 </main>
 <footer>
     <p>&copy; 2025 The Great Swedish Bake Off</p>
