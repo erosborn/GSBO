@@ -112,7 +112,8 @@ table {
 
 /* -------------------------------------------------------------------------- Base styles */
 body {
-    font-family: var(--sweden-sans);
+    font-family: var(--sweden-sans-book);
+    font-weight: 300;
     color: var(--text-color);
     background-color: var(--grain-yellow);
     line-height: 1.5;
@@ -135,11 +136,10 @@ h2 {
 }
 
 h3 {
-    font-family: var(--sweden-sans-bold);
-    font-size: 1.8rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    color: var(--dark-dawn-blue);
+    font-family: var(--sweden-sans);
+    font-size: 1.25rem;
+    font-weight: normal;
+    color: var(--dawn-blue);
 }
 
 em {
@@ -450,7 +450,7 @@ nav a[href$="shop.html"]::before {
 
 #recipe-intro dl dt {
     color: var(--sweden-blue);
-    font-weight: bold;
+    font-weight: normal;
     margin: 0;
 }
 
@@ -465,13 +465,18 @@ nav a[href$="shop.html"]::before {
 }
 
 
-/* Layout for Ingredients and Instructions using an ID */
+/* -------------------------------------------------------------------------- recipe-body */
 #recipe-body {
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
     margin-top: 2rem;
+    counter-reset: step-counter;
 }
+#recipe-body h2 {
+    margin-bottom: 1rem;
+}
+
 #recipe-body #ingredients,
 #recipe-body article {
     background-color: var(--white);
@@ -481,6 +486,45 @@ nav a[href$="shop.html"]::before {
 }
 #recipe-body article {
     flex: 2 1 500px;
+}
+
+#recipe-body ol {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+#recipe-body ol li {
+    margin: 1rem 0;
+    position: relative;
+}
+
+#recipe-body ol li:before {
+    content: "Step " counter(step-counter) "\A";
+    counter-increment: step-counter;
+    display: block;
+    white-space: pre;
+    position: relative;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+/* -------------------------------------------------------------------------- #practical-steps */
+#practical-steps {
+    counter-reset: practical-steps;
+}
+
+#practical-steps ol > li:before {
+    content: "Step " counter(practical-steps) "\A";
+    counter-increment: practical-steps;
+}
+
+#practical-steps details {
+    border-left: 1px solid var(--sweden-blue);
+}
+
+#practical-steps ul {
+    list-style: outside;
+    margin-left: 1.5rem;
 }
 
 /* Toggle fieldset styling remains the same */
