@@ -102,6 +102,8 @@ table {
     --grain-yellow: #e8e3d1;
     --pale-yellow: #ffd481;
     --text-color: #333;
+    --pale-winter-grey: #ededed;
+    --dk-winter-grey: #424242;
     
     /* Fonts */
     --sweden-sans: 'SwedenSans', sans-serif;
@@ -115,7 +117,7 @@ body {
     font-family: var(--sweden-sans-book);
     font-weight: 300;
     color: var(--text-color);
-    background-color: var(--grain-yellow);
+    background-color: var(--pale-winter-grey);
     line-height: 1.5;
 }
 
@@ -150,7 +152,6 @@ main {
     max-width: 1024px;
     margin: 0 auto;
     padding: 0 30px;
-    background-color: var(--grain-yellow);
     position: relative;
     z-index: 0;
     /* margin-top: -10px; */
@@ -158,17 +159,50 @@ main {
 
 /* --------------------------------------------------------------------------Header & Navigation */
 header {
-    background-color: var(--white);
-    padding: 2rem 0 0;
+    padding: 0;
     position: relative;
 }
 
-header h1 {
-    color: var(--dawn-blue);
-    margin-bottom: 2.5rem;
+header > div {
+    background-image: url('images/gsbo_logo.svg');
+    background-size: auto 100%;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    height: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1024px;
+    padding: 0;
+    position: relative;
+    background-color: var(--pale-winter-grey);
+}
+
+header > div > a {
+    display: block;
+    width: 360px;
+    height: 157px;
+    position: relative;
+    margin: 0 auto;
+    top: 20px;
+    z-index: 101;
+    text-indent: 110%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+header > div > a > img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+header > div > a:hover img {
+    transform: scale(1.02);
 }
 
 nav {
+    margin-top: 0;
     background-color: var(--sweden-blue);
     width: 100%;
     padding: 0;
@@ -189,10 +223,10 @@ nav ul {
 nav a {
     color: var(--white);
     text-decoration: none;
-    font-weight: 700;
-    font-size: 0.9rem;
+    font-weight: normal;
+    font-size: 1.25rem;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
     padding: 1.175rem 2rem;
     transition: all 0.3s ease;
     display: block;
@@ -219,6 +253,10 @@ nav a:hover {
 
 nav a.active:hover::after {
     border-top-color: var(--dawn-blue);
+}
+
+nav a.active {
+    font-weight: 700;
 }
 
 /* -------------------------------------------------------------------------- Temporarily hide unfinished nav links */
@@ -391,9 +429,9 @@ nav a[href$="shop.html"]::before {
 #recipe-header > div {
     position: relative;
     width: 100%;
-    height: 400px; /* Fixed banner height */
+    height: 400px;
     overflow: hidden;
-    background: #000; /* fallback background */
+    background: #000;
 }
 
 #recipe-header > div iframe {
@@ -403,6 +441,16 @@ nav a[href$="shop.html"]::before {
     width: 100%;
     height: 100%;
     border: 0;
+    background: transparent;
+}
+
+#recipe-header > div img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 /* Style for the back link */
