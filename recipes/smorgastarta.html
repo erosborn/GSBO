@@ -29,7 +29,9 @@
 </header>
 <main>
     <div id="recipe-header">
-        <img src="../images/food/smorgastarta_1024x450.jpg" alt="Swedish Sandwich Cake">
+        <div>
+            <img src="../images/food/smorgastarta_1024x450.jpg" alt="Swedish Sandwich Cake" class="main-image">
+        </div>
         <h2>Smörgåstårta (Swedish Sandwich Cake)</h2>
     </div>
     <section id="recipe-intro">
@@ -101,14 +103,14 @@
         </aside>
         <article>
             <h2>Instructions:</h2>
-            <fieldset>
-                <input type="radio" id="normal" name="language" checked>
-                <input type="radio" id="chef" name="language">
-                <div>
-                    <label for="normal">Normal</label>
-                    <label for="chef">ChefSpeak</label>
-                </div>
-            </fieldset>
+            <div class="toggle-container">
+                <span>Normal</span>
+                <label class="switch">
+                    <input type="checkbox" id="translateToggle">
+                    <span class="slider"></span>
+                </label>
+                <span>ChefSpeak</span>
+            </div>
             <h3>Assemble the Base and First Filling:</h3>
             <ol>
                 <li>Cut off the crusts of the bread slices. Arrange six slices in a rectangle on a platter.</li>

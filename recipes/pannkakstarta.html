@@ -29,7 +29,9 @@
 </header>
 <main>
     <div id="recipe-header">
-        <img src="../images/food/pannkakstarta_1024x450.jpg" alt="Swedish Pancake Cake">
+        <div>
+            <img src="../images/food/pannkakstarta_1024x450.jpg" alt="Swedish Pancake Cake" class="main-image">
+        </div>
         <h2>Pannkakstårta (Swedish Pancake Cake)</h2>
     </div>
 
@@ -85,14 +87,14 @@
         
         <article id="instructions">
             <h2>Instructions:</h2>
-            <fieldset>
-                <input type="radio" id="normal" name="language" checked>
-                <input type="radio" id="chef" name="language">
-                <div>
-                    <label for="normal">Normal</label>
-                    <label for="chef">ChefSpeak</label>
-                </div>
-            </fieldset>
+            <div class="toggle-container">
+                <span>Normal</span>
+                <label class="switch">
+                    <input type="checkbox" id="translateToggle">
+                    <span class="slider"></span>
+                </label>
+                <span>ChefSpeak</span>
+            </div>
             <h3>Make the Pancakes:</h3>
             <ol>
                 <li>Pour half of the milk into a bowl.</li>
@@ -124,6 +126,6 @@
     <p>&copy; 2025 The Great Swedish Bake Off</p>
     <p><a>Contact Us</a></p>
 </footer>
-
+<script src="../script.js"></script>
 </body>
 </html> 

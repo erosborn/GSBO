@@ -29,7 +29,9 @@
 </header>
 <main>
     <div id="recipe-header">
-        <img src="../images/food/semlor_1024x450.jpg" alt="Swedish Fat Tuesday Buns">
+        <div>
+            <img src="../images/food/semlor_1024x450.jpg" alt="Swedish Fat Tuesday Buns" class="main-image">
+        </div>
         <h2>Swedish Semlor (Fat Tuesday Buns)</h2>
     </div>
 
@@ -88,14 +90,14 @@
 
         <article>
             <h2>Instructions:</h2>
-            <fieldset>
-                <input type="radio" id="normal" name="language" checked>
-                <input type="radio" id="chef" name="language">
-                <div>
-                    <label for="normal">Normal</label>
-                    <label for="chef">ChefSpeak</label>
-                </div>
-            </fieldset>
+            <div class="toggle-container">
+                <span>Normal</span>
+                <label class="switch">
+                    <input type="checkbox" id="translateToggle">
+                    <span class="slider"></span>
+                </label>
+                <span>ChefSpeak</span>
+            </div>
             <h3>Make the Dough:</h3>
             <ol>
                 <li>Heat the milk until lukewarm.</li>

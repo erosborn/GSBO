@@ -6,6 +6,7 @@
     <meta name="author" content="Emily Osborn">
     <title>The Great Swedish Bake-Off</title>
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 <header>
@@ -31,7 +32,14 @@
     <section>
         <div id="recipe-header">
             <div>
-                <img src="images/tent_1024x450.jpg" alt="Interior of the Bake-Off tent with the logo superimposed on top">
+                <picture>
+                    <source media="(max-width: 480px)" srcset="images/ext_tent_768x338.jpg">
+                    <source media="(max-width: 768px)" srcset="images/ext_tent_1024x180.jpg">
+                    <img src="images/ext_tent_1024x450.jpg" 
+                         alt="Exterior of the Bake-Off tent with the logo superimposed on top" 
+                         class="main-image">
+                </picture>
+                <img src="images/gsbo_logo_dkmode.svg" alt="The Great Swedish Bake-Off logo" class="overlay-image">
             </div>
             <h2>Welcome to the Tent</h2>
         </div>
@@ -65,5 +73,8 @@
     <p>&copy; 2025 The Great Swedish Bake Off</p>
     <p>Contact Us</p>
 </footer>
+
+<!-- Add script.js reference before closing body tag -->
+<script src="script.js"></script>
 </body>
 </html>

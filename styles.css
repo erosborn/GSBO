@@ -121,6 +121,15 @@ body {
     line-height: 1.5;
 }
 
+/* Make images non-selectable */
+img {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    pointer-events: auto; /* Keeps images clickable while preventing selection */
+}
+
 h1 {
     font-family: var(--sweden-sans-bold);
     font-size: 3.5rem;
@@ -161,12 +170,11 @@ main {
 header {
     padding: 0;
     position: relative;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 100 100'%3E%3Cg stroke='%23005293' stroke-width='8.2' stroke-opacity='0.3'%3E%3Crect fill='%2399D5ED' x='-60' y='-60' width='109' height='240'/%3E%3C/g%3E%3C/svg%3E");
 }
 
 header > div {
-    background-color: var(--pale-winter-grey);
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 100 100'%3E%3Cg stroke='%23005293' stroke-width='8.2' stroke-opacity='0.3'%3E%3Crect fill='%2399D5ED' x='-60' y='-60' width='109' height='240'/%3E%3C/g%3E%3C/svg%3E");
-    height: 200px;
+    height: 170px;
     margin: 0 auto;
     max-width: 1024px;
     padding-inline: 0;
@@ -180,16 +188,17 @@ header > div > a {
     overflow: hidden;
     max-width: 360px;
     height: 157px;
-    background: transparent url('images/gsbo_logo.svg') no-repeat 0 0 / contain;
+    background: rgba(237, 237, 237, 0.7) url('images/gsbo_logo.svg') no-repeat center / contain;
     position: relative;
     margin: 0 auto;
-    top: 14px;
+    top: 6px;
     display: block;
     z-index: 101;
     outline: none;
     color: var(--sweden-blue);
     touch-action: manipulation;
     box-sizing: border-box;
+    border-radius: 4px;
 }
 
 nav {
@@ -206,9 +215,9 @@ nav ul {
     display: flex;
     justify-content: center;
     gap: 0;
-    max-width: 1400px;
+    max-width: 800px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0 1rem;
 }
 
 nav a:not([href$="index.html"]) {
@@ -218,7 +227,7 @@ nav a:not([href$="index.html"]) {
     font-size: 1.25rem;
     text-transform: uppercase;
     letter-spacing: 2px;
-    padding: 1.35rem 2rem 1rem;
+    padding: 1.35rem 1.5rem 1rem;
     transition: background-color 0.3s ease;
     display: block;
     position: relative;
@@ -230,7 +239,7 @@ nav a[href$="index.html"] {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0.7rem 2rem;
+    padding: 0.7rem 1.5rem;
     position: relative;
     transition: background-color 0.3s ease;
 }
@@ -451,12 +460,13 @@ nav a[href$="shop.html"]::before {
     position: relative;
     margin-bottom: 5rem;
     text-align: center;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.25));
 }
 
 #recipe-header > div {
     position: relative;
     width: 100%;
-    height: 400px;
+    padding-top: 44%; /* Aspect ratio based on 1024x450 (44% of width) */
     overflow: hidden;
     background: #000;
 }
@@ -468,11 +478,35 @@ nav a[href$="shop.html"]::before {
     position: absolute;
     top: 0;
     left: 0;
+}
+
+#recipe-header > div iframe {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+#recipe-header > div .main-image {
     transition: transform 0.4s ease;
 }
 
-#recipe-header:hover > div img {
-    transform: scale(1.1);
+#recipe-header > div .overlay-image {
+    width: 65%;
+    height: 65%;
+    object-fit: contain;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.75));
+}
+
+#recipe-header:hover > div .main-image {
+    transform: scale(1.05);
 }
 
 #recipe-header h2 {
@@ -512,6 +546,75 @@ nav a[href$="shop.html"]::before {
     left: -6px;
     border-color: var(--sweden-blue);
 }
+
+
+/* -------------------------------------------------------------------------- hero header */
+#hero-header {
+    position: relative;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+#hero-header figure {
+    position: relative;
+    width: 100%;
+    padding-top: 44%; /* Aspect ratio based on 1024x450 (44% of width) */
+    overflow: hidden;
+    margin: 0;
+}
+
+#hero-header figure img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#hero-header:hover figure img {
+    transform: scale(1.05);
+}
+
+#hero-header h2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--sweden-blue);
+    color: var(--white);
+    padding: 0.75rem 7rem;
+    margin: 0;
+    font-family: var(--sweden-sans);
+    font-weight: normal;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-wrap: nowrap;
+    font-size: 2rem;
+    z-index: 15;
+}
+
+#hero-header h2:after {
+    content: "";
+    display: block;
+    border: 2px solid var(--sweden-blue);
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    transition: all 0.15s ease-in-out;
+}
+
+#hero-header:hover h2:after {
+    top: -6px;
+    right: -6px;
+    bottom: -6px;
+    left: -6px;
+}
+
+
 
 /* Style for the back link */
 #back {
@@ -594,24 +697,26 @@ nav a[href$="shop.html"]::before {
 }
 #recipe-body article {
     flex: 2 1 500px;
+    position: relative;
 }
 
 #recipe-body ol {
     list-style-type: none;
     padding-left: 0;
+    counter-reset: step-counter;
 }
 
 #recipe-body ol li {
     margin: 1rem 0;
     position: relative;
+    padding-left: 0;
 }
 
-#recipe-body ol li:before {
-    content: "Step " counter(step-counter) "\A";
+#recipe-body ol li::before {
+    content: "Step " counter(step-counter);
     counter-increment: step-counter;
     display: block;
-    white-space: pre;
-    position: relative;
+    color: var(--sweden-blue);
     font-weight: 700;
     margin-bottom: 0.25rem;
 }
@@ -619,20 +724,79 @@ nav a[href$="shop.html"]::before {
 /* -------------------------------------------------------------------------- #practical-steps */
 #practical-steps {
     counter-reset: practical-steps;
+    margin: 2rem 0;
+    padding: 0rem 0;
+    border-top: 1px solid var(--pale-winter-grey);
+    border-bottom: 1px solid var(--pale-winter-grey);
+}
+
+#practical-steps details {
+    border-left: 2px solid var(--pale-winter-grey);
+    padding-left: 1rem;
+    margin: 1rem 0;
+    transition: border-left-color 0.3s ease, padding-left 0.3s ease;
+}
+
+#practical-steps details[open] {
+    border-left-color: var(--sweden-blue);
+    padding-left: 1.5rem;
+}
+
+#practical-steps summary {
+    color: var(--text-color);
+    font-weight: normal;
+    cursor: pointer;
+    padding: 0.5rem 0;
+    outline: none;
+    transition: color 0.3s ease;
+}
+
+#practical-steps summary:hover {
+    color: var(--sweden-blue);
+}
+
+#practical-steps details[open] summary {
+    color: var(--sweden-blue);
+    font-weight: 600;
+}
+
+#practical-steps h2 {
+    margin-top: 1.5rem;
+    font-size: 1.25rem;
+}
+
+#practical-steps h3 {
+    margin-top: 1.25rem;
+    font-size: 1.1rem;
+    color: var(--text-color);
+}
+
+#practical-steps ul {
+    list-style: disc;
+    margin: 1rem 0 1rem 1.5rem;
+}
+
+#practical-steps ul li {
+    margin: 0.5rem 0;
+}
+
+#practical-steps ol {
+    margin: 1rem 0;
+}
+
+#practical-steps ol > li {
+    margin: 0.75rem 0;
 }
 
 #practical-steps ol > li:before {
     content: "Step " counter(practical-steps) "\A";
     counter-increment: practical-steps;
+    color: var(--sweden-blue);
 }
 
-#practical-steps details {
-    border-left: 1px solid var(--sweden-blue);
-}
-
-#practical-steps ul {
-    list-style: outside;
-    margin-left: 1.5rem;
+#practical-steps p {
+    margin: 1rem 0;
+    color: var(--text-color);
 }
 
 /* Toggle fieldset styling remains the same */
@@ -806,69 +970,439 @@ footer a:hover {
     display: none;
 }
 
-/* -------------------------------------------------------------------------- hero header */
-#hero-header {
-    position: relative;
-    margin-bottom: 2rem;
-    text-align: center;
+.toggle-container {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
 }
 
-#hero-header figure {
-    margin: 0;
-    position: relative;
-    overflow: hidden;
-    z-index: 10;
-    height: 400px;
+.toggle-container span {
+    color: var(--text-color);
+    font-size: 0.75rem;
 }
 
-#hero-header figure img {
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 32px;
+    height: 18px;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 18px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--sweden-blue);
+}
+
+input:checked + .slider:before {
+    transform: translateX(14px);
+}
+
+/* Remove old fieldset styles */
+fieldset {
+    display: none;
+}
+
+/* -------------------------------------------------------------------------- Media Queries */
+
+/* Additional breakpoint for medium-sized screens */
+@media screen and (max-width: 900px) {
+    /* Adjust header sizes for medium screens */
+    header > div {
+        height: 180px;
+    }
+    
+    header > div > a {
+        max-width: 320px;
+        height: 140px;
+    }
+    
+    nav ul {
+        padding: 0 0.5rem;
+    }
+    
+    nav a:not([href$="index.html"]) {
+        padding: 1.35rem 1.25rem 1rem;
+        font-size: 1.1rem;
+    }
+    
+    nav a[href$="index.html"] {
+        padding: 0.7rem 1.25rem;
+    }
+    
+    /* Adjust hero header styling */
+    #hero-header h2 {
+        font-size: 1.75rem;
+        padding: 0.75rem 5rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    /* Tablet Grid Layout */
+    #recipes-grid > a,
+    #bakers-grid article {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+
+    /* Adjust header sizes */
+    h1 {
+        font-size: 2.5rem;
+    }
+    
+    header > div {
+        height: 160px;
+    }
+    
+    header > div > a {
+        max-width: 280px;
+        height: 130px;
+    }
+
+    /* Improve navigation spacing */
+    nav ul {
+        justify-content: space-between;
+        padding: 0 0.5rem;
+    }
+    
+    nav a:not([href$="index.html"]) {
+        padding: 1.25rem 1rem 0.9rem;
+        font-size: 1rem;
+        letter-spacing: 1px;
+    }
+    
+    nav a[href$="index.html"] {
+        padding: 0.7rem 1rem;
+    }
+
+    /* Position hero-header h2 for recipes and bakers pages to match recipe-header */
+    #hero-header h2 {
+        position: relative;
+        bottom: auto;
+        top: auto;
+        left: auto;
+        transform: none;
+        width: auto;
+        margin: 1rem auto 0;
+        padding: 0.75rem 1.5rem;
+        font-size: 1.1rem;
+        white-space: normal;
+    }
+
+    /* Recipe layout adjustments */
+    #recipe-intro dl {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    #recipe-intro dl > div {
+        flex: 0 0 calc(50% - 0.5rem);
+    }
+
+    /* Change aspect ratio to match the 1024x180 image dimensions (17.6%) */
+    #hero-header figure,
+    #recipe-header > div {
+        padding-top: 17.6%; /* Exact aspect ratio for 1024x180 images */
+        height: auto;
+    }
+    
+    /* Fix positioning of the welcome text */
+    #recipe-header h2 {
+        position: relative;
+        bottom: 0;
+        width: auto;
+        margin-top: 1rem;
+        white-space: normal;
+    }
+    
+    /* Position hero-header h2 for recipes and bakers pages to match recipe-header */
+    .recipes #hero-header h2,
+    .bakers #hero-header h2 {
+        position: relative;
+        bottom: auto;
+        transform: none;
+        left: auto;
+        width: auto;
+        margin: 1rem auto 0;
+        padding: 0.75rem 1.5rem;
+        font-size: 1.1rem;
+        white-space: normal;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    /* Additional breakpoint for small tablets/large phones */
+    header > div {
+        height: 150px;
+    }
+    
+    header > div > a {
+        max-width: 260px;
+        height: 120px;
+    }
+    
+    /* Compress navigation items further */
+    nav a:not([href$="index.html"]) {
+        padding: 1.25rem 0.8rem 0.9rem;
+        font-size: 0.9rem;
+        letter-spacing: 0.5px;
+    }
+    
+    #hero-header h2 {
+        font-size: 1.3rem;
+        padding: 0.6rem 2rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    /* Mobile Grid Layout */
+    #recipes-grid > a,
+    #bakers-grid article {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    /* Header adjustments */
+    header > div {
+        height: 150px;
+    }
+
+    header > div > a {
+        height: 120px;
+        max-width: 280px;
+    }
+
+    /* Basic styles for mobile navigation */
+    nav {
+        background-color: var(--sweden-blue);
+        display: block;
+        width: 100%;
+        height: 60px;
+        position: relative;
+        z-index: 100;
+    }
+    
+    /* Hide the original desktop navigation */
+    nav > ul {
+        display: none;
+    }
+
+    /* Hamburger button styling - ALWAYS visible on mobile */
+    .nav-toggle {
+        display: block;
+        position: relative;
+        width: 60px;
+        height: 60px;
+        margin: 0 auto;
+        background: none;
+        border: none;
+        cursor: pointer;
+        z-index: 102;
+        padding: 0;
+    }
+
+    /* The three lines of the hamburger */
+    .nav-toggle span {
+        display: block;
+        position: absolute;
+        width: 30px;
+        height: 3px;
+        background-color: white;
+        left: 15px;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    /* Position the three lines */
+    .nav-toggle span:nth-child(1) {
+        top: 22px;
+    }
+    
+    .nav-toggle span:nth-child(2) {
+        top: 29px;
+    }
+    
+    .nav-toggle span:nth-child(3) {
+        top: 36px;
+    }
+
+    /* Transform hamburger to X when active */
+    .nav-toggle.active span:nth-child(1) {
+        transform: rotate(45deg);
+        top: 29px;
+    }
+    
+    .nav-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .nav-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg);
+        top: 29px;
+    }
+
+    /* Mobile menu dropdown */
+    .mobile-menu-overlay {
+        display: none;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: var(--sweden-blue);
+        z-index: 101;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+
+    /* Show the menu when active */
+    .mobile-menu-overlay.active {
+        display: block;
+    }
+
+    /* Menu items */
+    .mobile-menu-overlay ul {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .mobile-menu-overlay li {
+        width: 100%;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .mobile-menu-overlay a {
+        color: white;
+        text-decoration: none;
+        font-size: 1.2rem;
+        padding: 15px 20px;
+        display: block;
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+    .mobile-menu-overlay a:hover,
+    .mobile-menu-overlay a.active {
+        font-weight: bold;
+        background-color: var(--dawn-blue);
+    }
+
+    /* Social media icons */
+    .mobile-social-icons {
+        display: flex;
+        justify-content: center;
+        padding: 20px 0;
+        gap: 20px;
+    }
+
+    .mobile-social-icons a {
+        color: white;
+        font-size: 1.5rem;
+        padding: 10px;
+    }
+
+    /* Hide desktop active indicator */
+    nav a.active::after {
+        display: none;
+    }
+
+    /* Recipe layout adjustments */
+    #recipe-intro dl > div {
+        flex: 0 0 100%;
+    }
+
+    #recipe-header h2 {
+        position: relative;
+        bottom: 0;
+        margin-top: 1rem;
+        padding: 0.75rem 1.5rem;
+        font-size: 1.1rem;
+        white-space: normal;
+    }
+
+    .bio-section {
+        flex-direction: column;
+    }
+
+    .bio-image {
+        flex: 0 0 auto;
+    }
+
+    /* Update mobile aspect ratio to match 768x338 images */
+    #hero-header figure,
+    #recipe-header > div {
+        padding-top: 44%; /* Correct aspect ratio for 768x338 images (44%) */
+        height: auto;
+    }
+    
+    /* Position hero-header h2 for recipes and bakers pages to match recipe-header */
+    .recipes #hero-header h2,
+    .bakers #hero-header h2 {
+        position: relative;
+        bottom: auto;
+        transform: none;
+        left: auto;
+        width: auto;
+        margin: 1rem auto 0;
+        padding: 0.75rem 1.5rem;
+        font-size: 1.1rem;
+        white-space: normal;
+    }
+
+    /* Position hero-header h2 for recipes and bakers pages to match recipe-header */
+    #hero-header h2 {
+        position: relative;
+        bottom: auto;
+        top: auto;
+        left: auto;
+        transform: none;
+        width: auto;
+        margin: 1rem auto 0;
+        padding: 0.75rem 1.5rem;
+        font-size: 1.1rem;
+        white-space: normal;
+    }
+}
+
+/* Hero and recipe header images - responsive support */
+picture {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+picture img,
+picture source {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: block;
-    transition: transform 0.4s ease-in-out;
-}
-
-#hero-header:hover figure img {
-    transform: scale(1.1);
-}
-
-#hero-header h2 {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: var(--sweden-blue);
-    color: var(--white);
-    padding: 0.75rem 7rem;
-    margin: 0;
-    font-family: var(--sweden-sans);
-    font-weight: normal;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    text-wrap: nowrap;
-    font-size: 2rem;
-    z-index: 15;
-}
-
-#hero-header h2:after {
-    content: "";
-    display: block;
-    border: 2px solid var(--sweden-blue);
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: -1;
-    transition: all 0.15s ease-in-out;
-}
-
-#hero-header:hover h2:after {
-    top: -6px;
-    right: -6px;
-    bottom: -6px;
-    left: -6px;
 }
 
 

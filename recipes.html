@@ -30,7 +30,11 @@
 <main>
     <div id="hero-header">
         <figure>
-            <img src="images/food_1024x450.jpg" alt="A selection of singing foods">
+            <picture>
+                <source media="(max-width: 480px)" srcset="images/food_768x338.jpg">
+                <source media="(max-width: 768px)" srcset="images/food_1024x180.jpg">
+                <img src="images/food_1024x450.jpg" alt="A selection of singing foods">
+            </picture>
         </figure>
         <h2>Recipes</h2>
     </div>

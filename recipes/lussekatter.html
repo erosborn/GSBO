@@ -29,7 +29,9 @@
 </header>
 <main>
     <div id="recipe-header">
-        <img src="../images/food/lussekatter_1024x450.jpg" alt="Classic St Lucia Buns">
+        <div>
+            <img src="../images/food/lussekatter_1024x450.jpg" alt="Classic St Lucia Buns" class="main-image">
+        </div>
         <h2>Lussekatter - <span>Classic St Lucia Buns</span></h2>
     </div>
     
@@ -76,14 +78,14 @@
 
         <article>
             <h2>Instructions:</h2>
-            <fieldset>
-                <input type="radio" id="normal" name="language" checked>
-                <input type="radio" id="chef" name="language">
-                <div>
-                    <label for="normal">Normal</label>
-                    <label for="chef">ChefSpeak</label>
-                </div>
-            </fieldset>
+            <div class="toggle-container">
+                <span>Normal</span>
+                <label class="switch">
+                    <input type="checkbox" id="translateToggle">
+                    <span class="slider"></span>
+                </label>
+                <span>ChefSpeak</span>
+            </div>
             <section>
                 <ol>
                     <li>Melt butter in a saucepan. Add milk and heat until lukewarm.</li>
@@ -106,5 +108,6 @@
     <p>&copy; 2025 The Great Swedish Bake Off</p>
     <p><a href="mailto:info@fakebakeoff.com">Contact Us</a></p>
 </footer>
+<script src="../script.js"></script>
 </body>
 </html> 

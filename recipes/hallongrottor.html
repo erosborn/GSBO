@@ -29,7 +29,9 @@
 </header>
 <main>
     <div id="recipe-header">
-        <img src="../images/food/hallongrottor_1024x450.jpg" alt="Swedish Raspberry Jam Cookies">
+        <div>
+            <img src="../images/food/hallongrottor_1024x450.jpg" alt="Swedish Raspberry Jam Cookies" class="main-image">
+        </div>
         <h2>Hallongrottor (Swedish Raspberry Jam Cookies)</h2>
     </div>
 
@@ -67,14 +69,14 @@
 
         <article id="instructions">
             <h2>Instructions:</h2>
-            <fieldset>
-                <input type="radio" id="normal" name="language" checked>
-                <input type="radio" id="chef" name="language">
-                <div>
-                    <label for="normal">Normal</label>
-                    <label for="chef">ChefSpeak</label>
-                </div>
-            </fieldset>
+            <div class="toggle-container">
+                <span>Normal</span>
+                <label class="switch">
+                    <input type="checkbox" id="translateToggle">
+                    <span class="slider"></span>
+                </label>
+                <span>ChefSpeak</span>
+            </div>
             <ol>
                 <li>Preheat oven to 350°F (175°C). Line a baking tray with parchment paper.</li>
                 <li>In a mixing bowl, combine flour, sugar, baking powder, and vanilla sugar.</li>
