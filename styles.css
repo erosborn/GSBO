@@ -58,8 +58,8 @@ table {
     font-family: 'SwedenSans';
     src: url('fonts/SwedenSansRegular.woff2') format('woff2'),
          url('fonts/SwedenSansRegular.otf') format('opentype');
-    font-style: normal;
     font-weight: normal;
+    font-style: normal;
     text-rendering: optimizeLegibility;
 }
 
@@ -67,8 +67,8 @@ table {
     font-family: 'SwedenSans';
     src: url('fonts/SwedenSansBook.woff2') format('woff2'),
          url('fonts/SwedenSansBook.otf') format('opentype');
-    font-style: normal;
     font-weight: 300;
+    font-style: normal;
     text-rendering: optimizeLegibility;
 }
 
@@ -76,8 +76,8 @@ table {
     font-family: 'SwedenSans';
     src: url('fonts/SwedenSansSemiBold.woff2') format('woff2'),
          url('fonts/SwedenSansSemiBold.otf') format('opentype');
-    font-style: normal;
     font-weight: 600;
+    font-style: normal;
     text-rendering: optimizeLegibility;
 }
 
@@ -85,8 +85,8 @@ table {
     font-family: 'SwedenSans';
     src: url('fonts/SwedenSansBold.woff2') format('woff2'),
          url('fonts/SwedenSansBold.otf') format('opentype');
-    font-style: normal;
     font-weight: 700;
+    font-style: normal;
     text-rendering: optimizeLegibility;
 }
 
@@ -114,7 +114,7 @@ table {
 
 /* -------------------------------------------------------------------------- Base styles */
 body {
-    font-family: var(--sweden-sans-book);
+    font-family: var(--sweden-sans);
     font-weight: 300;
     color: var(--text-color);
     background-color: var(--pale-winter-grey);
@@ -164,7 +164,7 @@ header {
 }
 
 header > div {
-    background-color: #ededed;
+    background-color: var(--pale-winter-grey);
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 100 100'%3E%3Cg stroke='%23005293' stroke-width='8.2' stroke-opacity='0.3'%3E%3Crect fill='%2399D5ED' x='-60' y='-60' width='109' height='240'/%3E%3C/g%3E%3C/svg%3E");
     height: 200px;
     margin: 0 auto;
@@ -180,11 +180,7 @@ header > div > a {
     overflow: hidden;
     max-width: 360px;
     height: 157px;
-    background-color: transparent;
-    background-image: url('images/gsbo_logo.svg');
-    background-position: 0 0;
-    background-repeat: no-repeat;
-    background-size: contain;
+    background: transparent url('images/gsbo_logo.svg') no-repeat 0 0 / contain;
     position: relative;
     margin: 0 auto;
     top: 14px;
@@ -215,15 +211,15 @@ nav ul {
     padding: 0 2rem;
 }
 
-nav a:not([href="index.html"]) {
+nav a:not([href$="index.html"]) {
     color: var(--white);
     text-decoration: none;
     font-weight: normal;
     font-size: 1.25rem;
     text-transform: uppercase;
     letter-spacing: 2px;
-    padding: 1.35rem 2rem 1rem;  /* Increased top padding, reduced bottom padding */
-    transition: all 0.3s ease;
+    padding: 1.35rem 2rem 1rem;
+    transition: background-color 0.3s ease;
     display: block;
     position: relative;
 }
@@ -231,11 +227,12 @@ nav a:not([href="index.html"]) {
 nav a[href$="index.html"] {
     width: auto;
     height: 100%;
-    line-height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 2rem;
+    padding: 0.7rem 2rem;
+    position: relative;
+    transition: background-color 0.3s ease;
 }
 
 nav a[href$="index.html"] img {
@@ -255,6 +252,7 @@ nav a.active::after {
     border-right: 20px solid transparent;
     border-top: 15px solid var(--sweden-blue);
     transition: border-top-color 0.3s ease;
+    z-index: 2;
 }
 
 nav a:hover {
@@ -305,7 +303,8 @@ nav a[href$="shop.html"]::before {
 
 /* -------------------------------------------------------------------------- recipes menu */
 
-#recipes-grid {
+#recipes-grid,
+#bakers-grid {
     display: flex;
     flex-wrap: wrap;
     margin: 0 -15px;
@@ -313,40 +312,53 @@ nav a[href$="shop.html"]::before {
     box-sizing: border-box;
 }
 
-#recipes-grid > a {
+#recipes-grid > a,
+#bakers-grid article {
     flex: 0 0 33.333%;
     max-width: 33.333%;
     padding: 0 15px;
     margin-bottom: 30px;
     position: relative;
-    text-decoration: none;
-    display: block;
     box-sizing: border-box;
 }
 
-#recipes-grid figure {
+#recipes-grid > a {
+    text-decoration: none;
+    display: block;
+}
+
+#recipes-grid figure,
+#bakers-grid figure {
     margin: 0;
     position: relative;
     overflow: hidden;
     z-index: 10;
+    padding-top: 100%; /* Creates a square aspect ratio */
 }
 
-#recipes-grid figure img {
+#recipes-grid figure img,
+#bakers-grid figure img {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
     transition: all 0.4s ease-in-out;
 }
 
-#recipes-grid > a > div {
+#recipes-grid > a > div,
+#bakers-grid article > div {
     background-color: var(--white);
     margin: -30px 10px 0;
-    padding: 20px 10px 12px;
+    padding: 20px 15px;
     position: relative;
     z-index: 15;
     text-align: center;
 }
 
-#recipes-grid > a > div:after {
+#recipes-grid > a > div:after,
+#bakers-grid article > div:after {
     content: "";
     display: block;
     border: 2px solid var(--white);
@@ -359,27 +371,48 @@ nav a[href$="shop.html"]::before {
     transition: all 0.15s ease-in-out;
 }
 
-#recipes-grid > a:hover > div:after {
+#recipes-grid > a:hover > div:after,
+#bakers-grid article:hover > div:after {
     top: -6px;
     right: -6px;
     bottom: -6px;
     left: -6px;
 }
 
-#recipes-grid > a:hover figure img {
+#recipes-grid > a:hover figure img,
+#bakers-grid article:hover figure img {
     transform: scale(1.1);
 }
 
 #recipes-grid h2 {
     color: var(--sweden-blue);
-    text-align: center;
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 0 0 0.75rem;
     line-height: 1.15;
 }
 
+#bakers-grid h3 {
+    color: var(--sweden-blue);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 0 0.75rem;
+    line-height: 1.15;
+}
+
+#recipes-grid p,
+#bakers-grid p {
+    color: var(--text-color);
+    line-height: 1.4;
+    margin: 0.75rem 0;
+    font-size: 0.8rem;
+}
+
+/* Recipe-specific styles */
 #recipes-grid h4 {
     font-weight: normal;
     font-style: italic;
-    font-size: 1.25rem;
+    font-size: 1rem;
     line-height: 1.15;
     text-transform: uppercase;
     color: var(--sweden-blue);
@@ -403,11 +436,14 @@ nav a[href$="shop.html"]::before {
     font-size: clamp(10px, 2vw, 16px);
 }
 
-#recipes-grid p {
-    color: var(--text-color);
-    line-height: 1.4;
-    margin: 0.75rem;
-    text-align: left;
+/* -------------------------------------------------------------------------- bakers grid */
+#bakers-heading {
+    font-family: var(--sweden-sans-bold);
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: var(--dawn-blue);
+    text-align: center;
 }
 
 /* -------------------------------------------------------------------------- recipe pages*/
@@ -415,37 +451,6 @@ nav a[href$="shop.html"]::before {
     position: relative;
     margin-bottom: 5rem;
     text-align: center;
-}
-#recipe-header img {
-    width: 100%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-    max-height: 400px;
-    object-fit: cover;
-}
-#recipe-header h2 {
-    position: absolute;
-    bottom: -30px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: var(--sweden-blue);
-    border: none;
-    box-shadow:
-        0 0 0 4px var(--white),
-        0 0 0 6px var(--sweden-blue);
-    color: var(--white);
-    padding: 0.75rem 7rem;
-    margin: 0;
-    font-family: var(--sweden-sans);
-    font-weight: normal;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    text-wrap: nowrap;
-}
-#recipe-header h2 span {
-    font-weight: 300;
-    font-style: italic;
 }
 
 #recipe-header > div {
@@ -456,16 +461,6 @@ nav a[href$="shop.html"]::before {
     background: #000;
 }
 
-#recipe-header > div iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: 0;
-    background: transparent;
-}
-
 #recipe-header > div img {
     width: 100%;
     height: 100%;
@@ -473,6 +468,49 @@ nav a[href$="shop.html"]::before {
     position: absolute;
     top: 0;
     left: 0;
+    transition: transform 0.4s ease;
+}
+
+#recipe-header:hover > div img {
+    transform: scale(1.1);
+}
+
+#recipe-header h2 {
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--sweden-blue);
+    color: var(--white);
+    padding: 0.75rem 7rem;
+    margin: 0;
+    font-family: var(--sweden-sans);
+    font-weight: normal;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-wrap: nowrap;
+    z-index: 15;
+}
+
+#recipe-header h2:after {
+    content: "";
+    display: block;
+    border: 2px solid var(--sweden-blue);
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    transition: all 0.15s ease-in-out;
+}
+
+#recipe-header:hover h2:after {
+    top: -6px;
+    right: -6px;
+    bottom: -6px;
+    left: -6px;
+    border-color: var(--sweden-blue);
 }
 
 /* Style for the back link */
@@ -644,6 +682,196 @@ footer a {
 footer a:hover {
     color: var(--sweden-yellow);
 }
+
+/* -------------------------------------------------------------------------- Baker Profiles */
+.baker-modal {
+    background-color: var(--white);
+    max-width: 700px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    z-index: 2000;
+    max-height: 85vh;
+    overflow-y: auto;
+    width: 90%;
+    border-radius: 4px;
+}
+
+.baker-modal.active {
+    display: block;
+}
+
+.modal-header {
+    background-color: var(--sweden-blue);
+    padding: 0.75rem 2rem;
+    position: relative;
+    border-radius: 4px 4px 0 0;
+}
+
+.modal-header h3 {
+    color: var(--white);
+    margin: 0;
+    text-align: center;
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+.modal-content {
+    padding: 1.5rem;
+}
+
+.bio-section {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.bio-section:not(:first-child) {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--pale-winter-grey);
+}
+
+.bio-image {
+    flex: 0 0 250px;
+}
+
+.bio-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+}
+
+.bio-text {
+    flex: 1;
+}
+
+.bio-text p {
+    margin: 0;
+    line-height: 1.6;
+    font-size: 1rem;
+    color: var(--text-color);
+}
+
+.close-button {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    background: none;
+    border: none;
+    color: var(--white);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.25rem;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s ease;
+}
+
+.close-button:hover {
+    opacity: 0.8;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: none;
+    z-index: 1999;
+}
+
+.overlay.active {
+    display: block;
+}
+
+#bakers-grid article {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+/* Hide the original asides */
+#bakers-grid article aside {
+    display: none;
+}
+
+/* -------------------------------------------------------------------------- hero header */
+#hero-header {
+    position: relative;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+#hero-header figure {
+    margin: 0;
+    position: relative;
+    overflow: hidden;
+    z-index: 10;
+    height: 400px;
+}
+
+#hero-header figure img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease-in-out;
+}
+
+#hero-header:hover figure img {
+    transform: scale(1.1);
+}
+
+#hero-header h2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--sweden-blue);
+    color: var(--white);
+    padding: 0.75rem 7rem;
+    margin: 0;
+    font-family: var(--sweden-sans);
+    font-weight: normal;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-wrap: nowrap;
+    font-size: 2rem;
+    z-index: 15;
+}
+
+#hero-header h2:after {
+    content: "";
+    display: block;
+    border: 2px solid var(--sweden-blue);
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    transition: all 0.15s ease-in-out;
+}
+
+#hero-header:hover h2:after {
+    top: -6px;
+    right: -6px;
+    bottom: -6px;
+    left: -6px;
+}
+
+
 
 
 
