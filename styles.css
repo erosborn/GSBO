@@ -217,7 +217,7 @@ nav ul {
     gap: 0;
     max-width: 800px;
     margin: 0 auto;
-    padding: 0 1rem;
+
 }
 
 nav a:not([href$="index.html"]) {
@@ -227,10 +227,12 @@ nav a:not([href$="index.html"]) {
     font-size: 1.25rem;
     text-transform: uppercase;
     letter-spacing: 2px;
-    padding: 1.35rem 1.5rem 1rem;
+    padding: 1.35rem 2.5rem 1.35rem;
     transition: background-color 0.3s ease;
     display: block;
     position: relative;
+    height: 100%;
+    box-sizing: border-box;
 }
 
 nav a[href$="index.html"] {
@@ -239,14 +241,15 @@ nav a[href$="index.html"] {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0.7rem 1.5rem;
+    padding: 0.7rem 2.5rem;
     position: relative;
     transition: background-color 0.3s ease;
+    box-sizing: border-box;
 }
 
 nav a[href$="index.html"] img {
-    height: 40px;
-    width: 40px;
+    height: clamp(24px, 5vw, 40px);
+    width: clamp(24px, 5vw, 40px);
 }
 
 nav a.active::after {
@@ -364,6 +367,11 @@ nav a[href$="shop.html"]::before {
     position: relative;
     z-index: 15;
     text-align: center;
+    min-height: 150px; /* Changed from height to min-height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Removed overflow: hidden to allow the span to be visible */
 }
 
 #recipes-grid > a > div:after,
@@ -1048,7 +1056,7 @@ fieldset {
     }
     
     nav a:not([href$="index.html"]) {
-        padding: 1.35rem 1.25rem 1rem;
+        padding: 1.35rem 2rem 1.35rem;
         font-size: 1.1rem;
     }
     
@@ -1084,21 +1092,15 @@ fieldset {
         max-width: 280px;
         height: 130px;
     }
-
-    /* Improve navigation spacing */
-    nav ul {
-        justify-content: space-between;
-        padding: 0 0.5rem;
-    }
     
     nav a:not([href$="index.html"]) {
-        padding: 1.25rem 1rem 0.9rem;
+        padding: 1.25rem 1.75rem 0.9rem;
         font-size: 1rem;
         letter-spacing: 1px;
     }
     
     nav a[href$="index.html"] {
-        padding: 0.7rem 1rem;
+        padding: 0.7rem 1   .5rem;
     }
 
     /* Position hero-header h2 for recipes and bakers pages to match recipe-header */
@@ -1169,7 +1171,7 @@ fieldset {
     
     /* Compress navigation items further */
     nav a:not([href$="index.html"]) {
-        padding: 1.25rem 0.8rem 0.9rem;
+        padding: 1.25rem 1.25rem 0.9rem;
         font-size: 0.9rem;
         letter-spacing: 0.5px;
     }
@@ -1235,7 +1237,7 @@ fieldset {
         height: 3px;
         background-color: white;
         left: 15px;
-        transition: transform 0.3s ease, opacity 0.3s ease;
+        transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
     }
 
     /* Position the three lines */
@@ -1268,7 +1270,6 @@ fieldset {
 
     /* Mobile menu dropdown */
     .mobile-menu-overlay {
-        display: none;
         position: absolute;
         top: 60px;
         left: 0;
@@ -1276,11 +1277,19 @@ fieldset {
         background-color: var(--sweden-blue);
         z-index: 101;
         box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        
+        /* Add transitions */
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-20px);
+        transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
     }
 
     /* Show the menu when active */
     .mobile-menu-overlay.active {
-        display: block;
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
     }
 
     /* Menu items */
@@ -1295,7 +1304,24 @@ fieldset {
     .mobile-menu-overlay li {
         width: 100%;
         border-bottom: 1px solid rgba(255,255,255,0.1);
+        transform: translateY(-10px);
+        opacity: 0;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        transition-delay: calc(0.05s * var(--item-index, 0));
     }
+
+    /* Add staggered animation for menu items */
+    .mobile-menu-overlay.active li {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    /* Give each menu item a different delay */
+    .mobile-menu-overlay li:nth-child(1) { --item-index: 1; }
+    .mobile-menu-overlay li:nth-child(2) { --item-index: 2; }
+    .mobile-menu-overlay li:nth-child(3) { --item-index: 3; }
+    .mobile-menu-overlay li:nth-child(4) { --item-index: 4; }
+    .mobile-menu-overlay li:nth-child(5) { --item-index: 5; }
 
     .mobile-menu-overlay a {
         color: white;
@@ -1305,6 +1331,7 @@ fieldset {
         display: block;
         text-align: center;
         text-transform: uppercase;
+        transition: background-color 0.2s ease, font-weight 0.2s ease;
     }
 
     .mobile-menu-overlay a:hover,
@@ -1313,19 +1340,7 @@ fieldset {
         background-color: var(--dawn-blue);
     }
 
-    /* Social media icons */
-    .mobile-social-icons {
-        display: flex;
-        justify-content: center;
-        padding: 20px 0;
-        gap: 20px;
-    }
-
-    .mobile-social-icons a {
-        color: white;
-        font-size: 1.5rem;
-        padding: 10px;
-    }
+    /* Social media icons - REMOVED */
 
     /* Hide desktop active indicator */
     nav a.active::after {
@@ -1406,7 +1421,12 @@ picture source {
     object-fit: cover;
 }
 
-
-
-
-
+/* Add specific overflow control for text content */
+#recipes-grid > a > div > h2,
+#recipes-grid > a > div > p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}

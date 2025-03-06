@@ -31,6 +31,58 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log("Navigation has been created and added to the header");
     }
 
+    // Load random recipes on homepage
+    function loadRecipePreviews() {
+        // Check if we're on the homepage and recipes-grid exists
+        const recipesGrid = document.querySelector('main section:nth-of-type(2) #recipes-grid');
+        
+        if (recipesGrid) {
+            // Fetch recipes page
+            fetch('recipes.html')
+                .then(response => response.text())
+                .then(html => {
+                    // Parse the HTML
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, 'text/html');
+                    
+                    // Get all recipe cards
+                    const recipes = Array.from(doc.querySelectorAll('#recipes-grid > a'));
+                    
+                    if (recipes.length) {
+                        // Shuffle the recipes
+                        const shuffled = recipes.sort(() => Math.random() - 0.5);
+                        
+                        // Get 3 recipes (or fewer if not enough)
+                        const selectedRecipes = shuffled.slice(0, 3);
+                        
+                        // Clear any existing recipes
+                        recipesGrid.innerHTML = '';
+                        
+                        // Add the selected recipes
+                        selectedRecipes.forEach(recipe => {
+                            // Clone the recipe element
+                            const recipeClone = recipe.cloneNode(true);
+                            
+                            // Only show category label for Swedish Chef Originals
+                            const categorySpan = recipeClone.querySelector('div > span');
+                            if (categorySpan && !categorySpan.textContent.includes('Swedish Chef Original')) {
+                                categorySpan.remove();
+                            }
+                            
+                            // Add to the grid
+                            recipesGrid.appendChild(recipeClone);
+                        });
+                    }
+                })
+                .catch(err => {
+                    console.error('Could not load recipes:', err);
+                });
+        }
+    }
+    
+    // Run the recipe loader
+    loadRecipePreviews();
+
     // Create modal and overlay elements for baker profiles
     const overlay = document.createElement('div');
     overlay.className = 'overlay';
@@ -188,17 +240,6 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 console.error("Navigation list not found");
             }
-            
-            // Add social media icons
-            const socialIcons = document.createElement('div');
-            socialIcons.className = 'mobile-social-icons';
-            socialIcons.innerHTML = `
-                <a href="#" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
-                <a href="#" aria-label="Twitter"><i class="fa fa-twitter"></i></a>
-                <a href="#" aria-label="Instagram"><i class="fa fa-instagram"></i></a>
-                <a href="#" aria-label="YouTube"><i class="fa fa-youtube-play"></i></a>
-            `;
-            mobileMenuOverlay.appendChild(socialIcons);
             
             // Add the overlay to the nav
             nav.appendChild(mobileMenuOverlay);
@@ -495,49 +536,4 @@ document.addEventListener('DOMContentLoaded', () => {
             return translatedSentence + punctuation;
         }).join(" ").trim();
     }
-
-    // Support for lazy-loaded images
-    function handleLazyImages() {
-        // Get all images with the lazy loading attribute
-        const lazyImages = document.querySelectorAll('img[loading="lazy"]');
-        
-        if ('IntersectionObserver' in window) {
-            const imageObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const image = entry.target;
-                        
-                        // If using srcset, ensure it's properly loaded
-                        if (image.dataset.srcset) {
-                            image.srcset = image.dataset.srcset;
-                        }
-                        
-                        // Mark as loaded for CSS transitions
-                        image.classList.add('loaded');
-                        
-                        // Stop observing the image
-                        observer.unobserve(image);
-                    }
-                });
-            });
-            
-            lazyImages.forEach(image => {
-                imageObserver.observe(image);
-            });
-        } else {
-            // Fallback for browsers that don't support IntersectionObserver
-            lazyImages.forEach(image => {
-                image.classList.add('loaded');
-            });
-        }
-    }
-    
-    // Call the lazy image handler
-    handleLazyImages();
-    
-    // Log after everything is set up
-    console.log("DOMContentLoaded complete, mobile menu should be initialized");
-}); 
-
-
-// Chefspeak Translator
+});
