@@ -353,7 +353,7 @@ nav a[href$="shop.html"]::before {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: all 0.4s ease-in-out;
+    transition: transform 0.3s ease-in-out;
 }
 
 #recipes-grid > a > div,
@@ -570,6 +570,7 @@ nav a[href$="shop.html"]::before {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.3s ease-in-out;
 }
 
 #hero-header:hover figure img {
