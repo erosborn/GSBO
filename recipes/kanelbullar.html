@@ -96,14 +96,15 @@
         
         <article>
             <h2>Instructions:</h2>
-            <fieldset>
-                <input type="radio" id="normal" name="language">
-                <input type="radio" id="chef" name="language" checked>
-                <div>
-                    <label for="normal">Normal</label>
-                    <label for="chef">ChefSpeak</label>
-                </div>
-            </fieldset>
+            <div class="toggle-container">
+                <span>Normal</span>
+                <label class="switch">
+                    <input type="checkbox" id="translateToggle">
+                    <div class="slider"></div>
+                    <div class="track"></div>
+                </label>
+                <span>ChefSpeak</span>
+            </div>
             <section>
                 <h3>Prepare the Dough:</h3>
                 <ol>

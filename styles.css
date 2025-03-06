@@ -979,57 +979,75 @@ footer a:hover {
     display: none;
 }
 
+/* Toggle switch styles - Firefox compatible version */
 .toggle-container {
     display: flex;
     align-items: center;
-    gap: 4px;
+    justify-content: flex-end;
+    gap: 8px;
     position: absolute;
     top: 0.75rem;
     right: 0.75rem;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 4px 8px;
+    border-radius: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .toggle-container span {
     color: var(--text-color);
     font-size: 0.75rem;
+    user-select: none;
 }
 
+/* Switch base */
 .switch {
-    position: relative;
     display: inline-block;
-    width: 32px;
-    height: 18px;
+    height: 20px;
+    position: relative;
+    width: 35px;
+    cursor: pointer;
 }
 
-.slider {
+/* Background track */
+.switch .track {
     position: absolute;
-    cursor: pointer;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     background-color: #ccc;
-    transition: .4s;
-    border-radius: 18px;
+    border-radius: 20px;
+    transition: background-color 0.2s;
 }
 
-.slider:before {
+/* Hide default checkbox */
+.switch input {
+    display: none;
+}
+
+/* Handle (slider) */
+.switch .slider {
     position: absolute;
-    content: "";
-    height: 14px;
+    top: 3px;
+    left: 3px;
     width: 14px;
-    left: 2px;
-    bottom: 2px;
-    background-color: white;
-    transition: .4s;
+    height: 14px;
     border-radius: 50%;
+    background: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
+    z-index: 1;
 }
 
-input:checked + .slider {
+/* Checked states */
+.switch input:checked + .slider {
+    transform: translateX(15px);
+}
+
+/* Change track color when checked */
+.switch input:checked ~ .track {
     background-color: var(--sweden-blue);
-}
-
-input:checked + .slider:before {
-    transform: translateX(14px);
 }
 
 /* Remove old fieldset styles */

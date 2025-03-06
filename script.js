@@ -37,46 +37,125 @@ document.addEventListener('DOMContentLoaded', () => {
         const recipesGrid = document.querySelector('main section:nth-of-type(2) #recipes-grid');
         
         if (recipesGrid) {
-            // Fetch recipes page
-            fetch('recipes.html')
-                .then(response => response.text())
-                .then(html => {
-                    // Parse the HTML
-                    const parser = new DOMParser();
-                    const doc = parser.parseFromString(html, 'text/html');
-                    
-                    // Get all recipe cards
-                    const recipes = Array.from(doc.querySelectorAll('#recipes-grid > a'));
-                    
-                    if (recipes.length) {
-                        // Shuffle the recipes
-                        const shuffled = recipes.sort(() => Math.random() - 0.5);
-                        
-                        // Get 3 recipes (or fewer if not enough)
-                        const selectedRecipes = shuffled.slice(0, 3);
-                        
-                        // Clear any existing recipes
-                        recipesGrid.innerHTML = '';
-                        
-                        // Add the selected recipes
-                        selectedRecipes.forEach(recipe => {
-                            // Clone the recipe element
-                            const recipeClone = recipe.cloneNode(true);
-                            
-                            // Only show category label for Swedish Chef Originals
-                            const categorySpan = recipeClone.querySelector('div > span');
-                            if (categorySpan && !categorySpan.textContent.includes('Swedish Chef Original')) {
-                                categorySpan.remove();
-                            }
-                            
-                            // Add to the grid
-                            recipesGrid.appendChild(recipeClone);
-                        });
+            console.log('Found recipes grid, attempting to load recipes...');
+            
+            // Check if we're running from file:// protocol
+            const isLocalFile = window.location.protocol === 'file:';
+            
+            if (isLocalFile) {
+                // Local file fallback - hardcode a few sample recipes
+                const sampleRecipes = [
+                    {
+                        href: 'recipes/lussekatter.html',
+                        imgSrc: 'images/food/lussekatter_380x360.jpg',
+                        title: 'Classic St Lucia Buns',
+                        subtitle: 'Lussekatter',
+                        description: 'Traditional saffron-flavored sweet rolls for St. Lucia Day'
+                    },
+                    {
+                        href: 'recipes/kanelbullar.html',
+                        imgSrc: 'images/food/kanelbullar_380x360.jpg',
+                        title: 'Swedish Cinnamon Buns',
+                        subtitle: 'Kanelbullar',
+                        description: 'Classic Swedish cinnamon buns with pearl sugar topping'
+                    },
+                    {
+                        href: 'recipes/souffle.html',
+                        imgSrc: 'images/food/souffle_380x360.jpg',
+                        title: 'Lighter-than-Air Soufflé',
+                        description: 'A gravity-defying masterpiece that may require archery skills.',
+                        isChefOriginal: true
+                    }
+                ];
+
+                // Shuffle the sample recipes
+                const shuffled = sampleRecipes.sort(() => Math.random() - 0.5);
+                
+                // Clear existing content
+                recipesGrid.innerHTML = '';
+                
+                // Add recipes to grid
+                shuffled.forEach(recipe => {
+                    const recipeHTML = `
+                        <a href="${recipe.href}" aria-label="View full recipe for ${recipe.title}">
+                            <figure>
+                                <img src="${recipe.imgSrc}" alt="${recipe.title}">
+                            </figure>
+                            <div>
+                                ${recipe.isChefOriginal ? '<span>Swedish Chef Original!</span>' : ''}
+                                <h2>${recipe.title}</h2>
+                                ${recipe.subtitle ? `<h4>${recipe.subtitle}</h4>` : ''}
+                                <p>${recipe.description}</p>
+                            </div>
+                        </a>
+                    `;
+                    recipesGrid.insertAdjacentHTML('beforeend', recipeHTML);
+                });
+                
+                console.log('Successfully added sample recipes for local file viewing');
+                
+            } else {
+                // Server mode - fetch recipes normally
+                const currentPath = window.location.pathname;
+                const recipesPath = currentPath.endsWith('index.html') || currentPath.endsWith('/') 
+                    ? 'recipes.html' 
+                    : './recipes.html';
+                
+                console.log('Fetching recipes from:', recipesPath);
+                
+                fetch(recipesPath, {
+                    method: 'GET',
+                    headers: {
+                        'Accept': 'text/html'
                     }
                 })
-                .catch(err => {
-                    console.error('Could not load recipes:', err);
-                });
+                    .then(function(response) {
+                        console.log('Fetch response status:', response.status);
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok: ' + response.status);
+                        }
+                        return response.text();
+                    })
+                    .then(function(html) {
+                        const parser = new DOMParser();
+                        const doc = parser.parseFromString(html, 'text/html');
+                        
+                        const recipes = Array.from(doc.querySelectorAll('#recipes-grid > a'));
+                        console.log('Found recipes:', recipes.length);
+                        
+                        if (recipes.length) {
+                            const shuffled = recipes.sort(() => Math.random() - 0.5);
+                            const selectedRecipes = shuffled.slice(0, 3);
+                            
+                            recipesGrid.innerHTML = '';
+                            selectedRecipes.forEach(recipe => {
+                                const recipeClone = recipe.cloneNode(true);
+                                const categorySpan = recipeClone.querySelector('div > span');
+                                if (categorySpan && !categorySpan.textContent.includes('Swedish Chef Original')) {
+                                    categorySpan.remove();
+                                }
+                                recipesGrid.appendChild(recipeClone);
+                            });
+                            
+                            console.log('Successfully added recipes to the grid');
+                        } else {
+                            throw new Error('No recipes found in the parsed HTML');
+                        }
+                    })
+                    .catch(function(err) {
+                        console.error('Could not load recipes. Details:', err);
+                        if (recipesGrid) {
+                            recipesGrid.innerHTML = '<p>Sorry, recipes are temporarily unavailable. Please try again later.</p>';
+                            console.error('Full error details:', {
+                                message: err.message,
+                                stack: err.stack,
+                                location: window.location.href
+                            });
+                        }
+                    });
+            }
+        } else {
+            console.log('Recipes grid not found on this page');
         }
     }
     
