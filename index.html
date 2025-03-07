@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Emily Osborn">
     <title>The Great Swedish Bake-Off</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
@@ -20,7 +20,7 @@
                     <img src="images/chef-icon-white.svg" alt="Chef Icon" width="24" height="24">
                     <span class="sr-only">Home</span>
                 </a>
-            </a></li>
+            </li>
             <li><a href="recipes.html">Recipes</a></li>
             <li><a href="shop.html">Shop</a></li>
             <li><a href="bakers.html">The Bakers</a></li>
@@ -29,42 +29,35 @@
     </nav>
 </header>
 <main>
-    <section>
+    <section aria-labelledby="welcome-heading">
         <div id="recipe-header">
             <div>
+                <h1 class="sr-only">The Great Swedish Bake-Off</h1>
                 <picture>
                     <source media="(max-width: 480px)" srcset="images/ext_tent_768x338.jpg">
                     <source media="(max-width: 768px)" srcset="images/ext_tent_1024x180.jpg">
-                    <img src="images/ext_tent_1024x450.jpg" 
-                         alt="Exterior of the Bake-Off tent with the logo superimposed on top" 
-                         class="main-image">
+                    <img src="images/ext_tent_1024x450.jpg" alt="Exterior of the Bake-Off tent with the logo superimposed on top" class="main-image">
                 </picture>
                 <img src="images/gsbo_logo_dkmode.svg" alt="The Great Swedish Bake-Off logo" class="overlay-image">
             </div>
-            <h2>Welcome to the Tent</h2>
+            <h2 id="welcome-heading">Welcome to the Tent</h2>
         </div>
     </section>
-    <section>
-        <h2>Latest Recipes</h2>
+    <section aria-labelledby="recipes-heading">
+        <h2 id="recipes-heading">Latest Recipes</h2>
         <div id="recipes-grid">
             <!-- Recipe cards will be populated by JavaScript -->
         </div>
     </section>
-    <section aria-labelledby="news-title">
-        <h2 id="news-title">News</h2>
-        <article>
-        <h3>Headline 1</h3>
-        <p>Latest updates from the Bake Off world.</p>
-        </article>
-        <article>
-        <h3>Headline 2</h3>
-        <p>Another exciting piece of news.</p>
-        </article>
-    </section>
+    <div aria-labelledby="airing-soon">
+        <h2 id="airing-soon">Fully baked by Fall of 2025!</h2>
+        <h3>Airing exclusively on IBS radio!</h3>
+        <p>Brought to you by the Intermittent Broadcasting Station</p>
+    </div>
 </main>
 <footer>
-    <p>&copy; 2025 The Great Swedish Bake Off</p>
-    <p>Contact Us</p>
+    <p>&copy; 2025 Emily Osborn</p>
+    <p>For Educational Purposes Only</p>
 </footer>
 <script src="script.js"></script>
 </body>

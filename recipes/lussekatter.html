@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Emily Osborn">
     <title>Classic St Lucia Buns (Lussekatter) - The Great Swedish Bake-Off</title>
-    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
 <header>
@@ -37,6 +37,7 @@
     
     <section id="recipe-intro">
         <a href="../recipes.html" id="back">← Back to Recipes</a>
+        <h2 class="sr-only">About the recipe</h2>
         <p>Traditional saffron-flavored sweet rolls served on December 13th to celebrate St. Lucia Day.</p>
         <dl>
             <div>
@@ -58,7 +59,8 @@
         </dl>
     </section>
 
-    <section id="recipe-body">
+    <section id="recipe-body" aria-labelledby="recipe-content">
+        <h2 id="recipe-content" class="sr-only">Recipe Content</h2>
         <aside id="ingredients">
             <h2>Ingredients:</h2>
             <ul>
@@ -82,12 +84,13 @@
                 <span>Normal</span>
                 <label class="switch">
                     <input type="checkbox" id="translateToggle">
-                    <div class="slider"></div>
-                    <div class="track"></div>
+                    <span class="slider"></span>
+                    <span class="track"></span>
                 </label>
                 <span>ChefSpeak</span>
             </div>
-            <section>
+            <section aria-labelledby="instructions-steps">
+                <h3 id="instructions-steps" class="sr-only">Recipe Steps</h3>
                 <ol>
                     <li>Melt butter in a saucepan. Add milk and heat until lukewarm.</li>
                     <li>Pour the milk and butter mixture into a bowl. Add yeast and stir until dissolved.</li>
@@ -106,8 +109,8 @@
         
 </main>
 <footer>
-    <p>&copy; 2025 The Great Swedish Bake Off</p>
-    <p><a href="mailto:info@fakebakeoff.com">Contact Us</a></p>
+    <p>&copy; 2025 Emily Osborn</p>
+    <p>For Educational Purposes Only</p>
 </footer>
 <script src="../script.js"></script>
 </body>

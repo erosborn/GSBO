@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Emily Osborn">
     <title>Kanelbullar (Swedish Cinnamon Buns) - The Great Swedish Bake-Off</title>
-    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
 <header>
@@ -34,8 +34,9 @@
         </div>
         <h2>Kanelbullar (Swedish Cinnamon Buns)</h2>
     </div>
-    <section id="recipe-intro">
-        <a href="../recipes.html" id="back">← Back to Recipes</a>
+    <section id="recipe-intro" aria-labelledby="recipe-intro-heading">
+        <h2 id="recipe-intro-heading" class="sr-only">Recipe Introduction</h2>
+        <a href="../recipes.html" id="back">&larr; Back to Recipes</a>
         <p>Classic Swedish cinnamon buns with a perfect blend of butter, sugar, and spices.</p>
         <dl>
             <div>
@@ -60,7 +61,8 @@
             </div>
         </dl>
     </section>
-    <section id="recipe-body">
+    <section id="recipe-body" aria-labelledby="recipe-content">
+        <h2 id="recipe-content" class="sr-only">Recipe Content</h2>
         <aside id="ingredients">
             <section>
                 <h2>Ingredients:</h2>
@@ -100,8 +102,8 @@
                 <span>Normal</span>
                 <label class="switch">
                     <input type="checkbox" id="translateToggle">
-                    <div class="slider"></div>
-                    <div class="track"></div>
+                    <span class="slider"></span>
+                    <span class="track"></span>
                 </label>
                 <span>ChefSpeak</span>
             </div>
@@ -126,9 +128,9 @@
                 </ol>
                 <h3>Bake:</h3>
                 <ol>
-                    <li>Preheat oven to 435°F (225°C).</li>
+                    <li>Preheat oven to 435&deg;F (225&deg;C).</li>
                     <li>Whisk an egg with a small amount of milk and brush it over the buns. Sprinkle with pearl sugar if using.</li>
-                    <li>Bake for 10–12 minutes until golden brown.</li>
+                    <li>Bake for 10&ndash;12 minutes until golden brown.</li>
                     <li>Cool on a wire rack before serving.</li>
                 </ol>
             </section>
@@ -136,8 +138,8 @@
     </section>
 </main>
 <footer>
-    <p>&copy; 2025 The Great Swedish Bake Off</p>
-    <p><a href="mailto:info@fakebakeoff.com">Contact Us</a></p>
+    <p>&copy; 2025 Emily Osborn</p>
+    <p>For Educational Purposes Only</p>
 </footer>
 <script src="../script.js"></script>
 </body>

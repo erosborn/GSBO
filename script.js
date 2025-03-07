@@ -1,101 +1,66 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // First, ensure navigation exists, especially for index.html
-    const header = document.querySelector('header');
-    if (header && !header.querySelector('nav')) {
-        console.log("Navigation doesn't exist! Creating it now...");
-        
-        // Create navigation element
-        const nav = document.createElement('nav');
-        nav.setAttribute('aria-label', 'Main Navigation');
-        
-        // Create navigation links
-        const navList = document.createElement('ul');
-        
-        // Home link with chef icon
-        navList.innerHTML = `
-            <li>
-                <a href="index.html">
-                    <img src="images/chef-icon-white.svg" alt="Chef Icon" width="24" height="24">
-                    <span class="sr-only">Home</span>
-                </a>
-            </li>
-            <li><a href="recipes.html">Recipes</a></li>
-            <li><a href="shop.html">Shop</a></li>
-            <li><a href="bakers.html">The Bakers</a></li>
-            <li><a href="about.html">About</a></li>
-        `;
-        
-        nav.appendChild(navList);
-        header.appendChild(nav);
-        
-        console.log("Navigation has been created and added to the header");
-    }
-
+document.addEventListener("DOMContentLoaded", () => {
     // Load random recipes on homepage
     function loadRecipePreviews() {
-        // Check if we're on the homepage and recipes-grid exists
-        const recipesGrid = document.querySelector('main section:nth-of-type(2) #recipes-grid');
-        
+        const recipesGrid = document.querySelector(
+            "main section:nth-of-type(2) #recipes-grid"
+        );
         if (recipesGrid) {
-            console.log('Found recipes grid, attempting to load recipes...');
-            
-            // Check if we're running from file:// protocol
-            const isLocalFile = window.location.protocol === 'file:';
-            
+            console.log("Found recipes grid, attempting to load recipes...");
+            const isLocalFile = window.location.protocol === "file:";
             if (isLocalFile) {
-                // Local file fallback - hardcode a few sample recipes
                 const sampleRecipes = [
                     {
-                        href: 'recipes/lussekatter.html',
-                        imgSrc: 'images/food/lussekatter_380x360.jpg',
-                        title: 'Classic St Lucia Buns',
-                        subtitle: 'Lussekatter',
-                        description: 'Traditional saffron-flavored sweet rolls for St. Lucia Day'
+                        href: "recipes/lussekatter.html",
+                        imgSrc: "images/food/lussekatter_380x360.jpg",
+                        title: "Classic St Lucia Buns",
+                        subtitle: "Lussekatter",
+                        description: "Traditional saffron-flavored sweet rolls"
+                            + " for St. Lucia Day"
                     },
                     {
-                        href: 'recipes/kanelbullar.html',
-                        imgSrc: 'images/food/kanelbullar_380x360.jpg',
-                        title: 'Swedish Cinnamon Buns',
-                        subtitle: 'Kanelbullar',
-                        description: 'Classic Swedish cinnamon buns with pearl sugar topping'
+                        href: "recipes/kanelbullar.html",
+                        imgSrc: "images/food/kanelbullar_380x360.jpg",
+                        title: "Swedish Cinnamon Buns",
+                        subtitle: "Kanelbullar",
+                        description: "Classic Swedish cinnamon buns with"
+                            + " pearl sugar topping"
                     },
                     {
-                        href: 'recipes/souffle.html',
-                        imgSrc: 'images/food/souffle_380x360.jpg',
-                        title: 'Lighter-than-Air Soufflé',
-                        description: 'A gravity-defying masterpiece that may require archery skills.',
+                        href: "recipes/souffle.html",
+                        imgSrc: "images/food/souffle_380x360.jpg",
+                        title: "Lighter-than-Air Soufflé",
+                        description: "A gravity-defying masterpiece that may"
+                            + " require archery skills.",
                         isChefOriginal: true
                     }
                 ];
 
-                // Shuffle the sample recipes
                 const shuffled = sampleRecipes.sort(() => Math.random() - 0.5);
-                
-                // Clear existing content
-                recipesGrid.innerHTML = '';
-                
-                // Add recipes to grid
+                recipesGrid.innerHTML = "";
                 shuffled.forEach(recipe => {
                     const recipeHTML = `
-                        <a href="${recipe.href}" aria-label="View full recipe for ${recipe.title}">
+                        <a href="${recipe.href}"
+                           aria-label="View full recipe for ${recipe.title}">
                             <figure>
-                                <img src="${recipe.imgSrc}" alt="${recipe.title}">
+                                <img src="${recipe.imgSrc}"
+                                     alt="${recipe.title}">
                             </figure>
                             <div>
-                                ${recipe.isChefOriginal ? '<span>Swedish Chef Original!</span>' : ''}
+                                ${recipe.isChefOriginal ?
+                                    "<span>Swedish Chef Original!</span>" : ""}
                                 <h2>${recipe.title}</h2>
-                                ${recipe.subtitle ? `<h4>${recipe.subtitle}</h4>` : ''}
+                                ${recipe.subtitle && recipe.subtitle.trim() ?
+                                    `<h4>${recipe.subtitle}</h4>` : ""}
                                 <p>${recipe.description}</p>
                             </div>
                         </a>
                     `;
-                    recipesGrid.insertAdjacentHTML('beforeend', recipeHTML);
+                    recipesGrid.insertAdjacentHTML("beforeend", recipeHTML);
                 });
                 
-                console.log('Successfully added sample recipes for local file viewing');
+                console.log("Successfully added sample recipes for local file viewing");
                 
             } else {
-                // Server mode - fetch recipes normally
                 const currentPath = window.location.pathname;
                 const recipesPath = currentPath.endsWith('index.html') || currentPath.endsWith('/') 
                     ? 'recipes.html' 
@@ -159,10 +124,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     
-    // Run the recipe loader
     loadRecipePreviews();
 
-    // Create modal and overlay elements for baker profiles
     const overlay = document.createElement('div');
     overlay.className = 'overlay';
     document.body.appendChild(overlay);
@@ -171,7 +134,6 @@ document.addEventListener('DOMContentLoaded', () => {
     modal.className = 'baker-modal';
     document.body.appendChild(modal);
 
-    // Handle article clicks
     const articles = document.querySelectorAll('#bakers-grid article');
     articles.forEach(article => {
         article.addEventListener('click', (e) => {
@@ -181,7 +143,6 @@ document.addEventListener('DOMContentLoaded', () => {
             let modalContent = '';
             const contentContainer = aside.querySelector('div:last-child');
 
-            // Handle first bio (directly in the container)
             const firstFigure = contentContainer.querySelector(':scope > figure');
             const firstText = contentContainer.querySelector(':scope > div');
             if (firstFigure && firstText) {
@@ -197,7 +158,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 `;
             }
 
-            // Handle second bio (in the nested div)
             const secondBioContainer = contentContainer.querySelector(':scope > div:last-child');
             if (secondBioContainer) {
                 const secondFigure = secondBioContainer.querySelector('figure');
@@ -228,15 +188,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
             openModal();
 
-            // Add close button event listener
             modal.querySelector('.close-button').addEventListener('click', closeModal);
         });
     });
 
-    // Close modal when clicking overlay
     overlay.addEventListener('click', closeModal);
 
-    // Close modal when pressing Escape
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
             closeModal();
@@ -253,16 +210,12 @@ document.addEventListener('DOMContentLoaded', () => {
         overlay.classList.remove('active');
     }
 
-    // Simple function to check if an element exists
     function elementExists(selector) {
         return document.querySelector(selector) !== null;
     }
 
-    // Mobile Menu Setup - CRUCIAL PART
     function setupMobileMenu() {
-        // Only set up mobile menu if viewport width is 480px or less
         if (window.innerWidth > 480) {
-            // Remove mobile menu elements if they exist and we're on desktop
             const existingToggle = document.querySelector('.nav-toggle');
             const existingMobileMenu = document.querySelector('.mobile-menu-overlay');
             
@@ -287,7 +240,6 @@ document.addEventListener('DOMContentLoaded', () => {
         
         console.log("Nav found:", nav);
         
-        // Create toggle button if not exists
         if (!elementExists('.nav-toggle')) {
             console.log("Creating nav toggle");
             const menuToggle = document.createElement('button');
@@ -299,18 +251,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 <span></span>
             `;
             
-            // Insert at beginning of nav
             nav.insertBefore(menuToggle, nav.firstChild);
             console.log("Toggle button created and inserted");
         }
         
-        // Create mobile menu overlay if not exists
         if (!elementExists('.mobile-menu-overlay')) {
             console.log("Creating mobile menu overlay");
             const mobileMenuOverlay = document.createElement('div');
             mobileMenuOverlay.className = 'mobile-menu-overlay';
             
-            // Clone the navigation links if they exist
             const navUl = nav.querySelector('ul');
             if (navUl) {
                 const navLinks = navUl.cloneNode(true);
@@ -320,12 +269,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.error("Navigation list not found");
             }
             
-            // Add the overlay to the nav
             nav.appendChild(mobileMenuOverlay);
             console.log("Mobile menu overlay created and appended");
         }
         
-        // Now get references to our elements
         const menuToggle = document.querySelector('.nav-toggle');
         const mobileMenuOverlay = document.querySelector('.mobile-menu-overlay');
         
@@ -334,11 +281,9 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
         
-        // Remove old listeners first to prevent duplicates
         const newMenuToggle = menuToggle.cloneNode(true);
         menuToggle.parentNode.replaceChild(newMenuToggle, menuToggle);
         
-        // Toggle menu when button is clicked
         newMenuToggle.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
@@ -347,7 +292,6 @@ document.addEventListener('DOMContentLoaded', () => {
             mobileMenuOverlay.classList.toggle('active');
         });
         
-        // Close menu when clicking a link
         mobileMenuOverlay.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 console.log("Link clicked, closing menu");
@@ -356,7 +300,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
         
-        // Close menu when clicking outside
         document.addEventListener('click', (e) => {
             if (!nav.contains(e.target) && mobileMenuOverlay.classList.contains('active')) {
                 console.log("Outside click, closing menu");
@@ -368,18 +311,20 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log("Mobile menu setup complete");
     }
     
-    // Initialize mobile menu only on mobile screens
     console.log("Initializing mobile menu...");
     setupMobileMenu();
     
-    // Listen for window resize and re-initialize menu when needed
     window.addEventListener('resize', () => {
         setupMobileMenu();
     });
     
     // ChefSpeak Translation Setup
+    console.log("Setting up ChefSpeak translations...");
     const recipeArticles = document.querySelectorAll('#recipe-body article');
-    recipeArticles.forEach(article => {
+    console.log("Found recipe articles:", recipeArticles.length);
+    
+    recipeArticles.forEach((article, index) => {
+        console.log(`Setting up translation for article ${index + 1}`);
         setupChefTranslation(article);
     });
 
@@ -387,29 +332,35 @@ document.addEventListener('DOMContentLoaded', () => {
         const toggleSwitch = container.querySelector('#translateToggle');
         const instructions = container.querySelectorAll('ol li');
         
-        if (!toggleSwitch || !instructions.length) return;
+        console.log("Toggle switch found:", !!toggleSwitch);
+        console.log("Number of instruction items:", instructions.length);
+        
+        if (!toggleSwitch || !instructions.length) {
+            console.log("Missing required elements, skipping setup");
+            return;
+        }
 
         let originalText = [];
         let translatedText = [];
 
-        // Store original text
-        instructions.forEach(li => {
+        instructions.forEach((li, index) => {
             originalText.push(li.textContent);
             translatedText.push(swedishChefTranslate(li.textContent));
+            console.log(`Instruction ${index + 1} translated`);
         });
 
-        // Add event listener for toggle switch
-        toggleSwitch.addEventListener('change', () => {
+        toggleSwitch.addEventListener('change', (e) => {
+            console.log("Toggle changed:", e.target.checked);
             instructions.forEach((li, i) => {
-                li.textContent = toggleSwitch.checked ? translatedText[i] : originalText[i];
+                li.textContent = e.target.checked ? translatedText[i] : originalText[i];
             });
         });
 
-        // Set initial state (ChefSpeak by default)
         toggleSwitch.checked = true;
         instructions.forEach((li, i) => {
             li.textContent = translatedText[i];
         });
+        console.log("Initial translation complete");
     }
 
     function swedishChefTranslate(text) {
@@ -513,15 +464,11 @@ document.addEventListener('DOMContentLoaded', () => {
         function swedifyWord(word) {
             if (!word.match(/[a-zA-Z]/)) return word;
             
-            // Common Swedish Chef phonetic patterns
             const patterns = {
-                // Word beginnings
                 '^th': 'd',
                 '^ch': 'sh',
                 '^c': 'k',
                 '^ph': 'f',
-
-                // Word endings
                 'ing$': 'een',
                 'ed$': 'ëd',
                 'er$': 'ür',
@@ -531,15 +478,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 'le$': 'el',
                 'tion$': 'shün',
                 'sion$': 'shün',
-
-                // Internal consonant sounds
                 'ck': 'k',
                 'ch': 'sh',
                 'sh': 'sh',
                 'ph': 'f',
                 'th': 'd',
-
-                // Vowel combinations (ordered by length to prevent overlap)
                 'oo': 'øø',
                 'ou': 'øø',
                 'oa': 'øø',
@@ -548,8 +491,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 'ea': 'ëë',
                 'ei': 'ëë',
                 'ey': 'ëë',
-
-                // Single vowels (applied last)
                 'u': 'ü',
                 'o': 'ø',
                 'a': 'å',
@@ -559,7 +500,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             let result = word.toLowerCase();
             
-            // Apply phonetic replacements in order
             Object.entries(patterns).forEach(([sound, replacement]) => {
                 const regex = new RegExp(sound, 'g');
                 if (regex.test(result)) {
@@ -567,22 +507,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
-            // Add common Swedish Chef word structures
             if (result.length > 3) {
-                // Add prefixes
                 if (Math.random() < 0.3) {
                     const prefixes = ['dü ', 'dê ', 'yî '];
                     result = prefixes[Math.floor(Math.random() * prefixes.length)] + result;
                 }
                 
-                // Add suffixes
                 if (Math.random() < 0.3 && !result.endsWith('a')) {
                     const suffixes = ['-a', '-ën', '-ür'];
                     result = result + suffixes[Math.floor(Math.random() * suffixes.length)];
                 }
             }
 
-            // Sometimes split words with hyphens for emphasis
             if (result.length > 5 && Math.random() < 0.2) {
                 const syllables = result.match(/[bcdfghjklmnpqrstvwxz]*[åäëéøöüûîï]+(?:[bcdfghjklmnpqrstvwxz]*e?|[bcdfghjklmnpqrstvwxz]*[åäëéøöüûîï]+[bcdfghjklmnpqrstvwxz]*)*/gi) || [result];
                 if (syllables.length > 1) {
